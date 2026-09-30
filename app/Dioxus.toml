@@ -1,0 +1,5 @@
+[application]
+name = "baatcheet"
+
+[web.app]
+title = "Baatcheet"

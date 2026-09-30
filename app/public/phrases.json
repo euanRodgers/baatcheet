@@ -1,0 +1,1470 @@
+{
+  "version": 1,
+  "phrases": [
+    {
+      "id": "greet-001",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Namaste",
+      "deva": "नमस्ते",
+      "english": "Hello",
+      "notes": "Safe with everyone. Some families greet elders with Pranaam.",
+      "tiles": [
+        "Namaste"
+      ],
+      "devaTiles": [
+        "नमस्ते"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-002",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aap kaise hain?",
+      "deva": "आप कैसे हैं?",
+      "english": "How are you? (to a man)",
+      "notes": "To a woman, say kaisi.",
+      "tiles": [
+        "Aap",
+        "kaise",
+        "hain?"
+      ],
+      "devaTiles": [
+        "आप",
+        "कैसे",
+        "हैं?"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-003",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aap kaisi hain?",
+      "deva": "आप कैसी हैं?",
+      "english": "How are you? (to a woman)",
+      "notes": "To a man, say kaise.",
+      "tiles": [
+        "Aap",
+        "kaisi",
+        "hain?"
+      ],
+      "devaTiles": [
+        "आप",
+        "कैसी",
+        "हैं?"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-004",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Main theek hoon",
+      "deva": "मैं ठीक हूँ",
+      "english": "I'm fine",
+      "notes": "Add 'aap?' to ask back.",
+      "tiles": [
+        "Main",
+        "theek",
+        "hoon"
+      ],
+      "devaTiles": [
+        "मैं",
+        "ठीक",
+        "हूँ"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-005",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Haan",
+      "deva": "हाँ",
+      "english": "Yes",
+      "notes": "",
+      "tiles": [
+        "Haan"
+      ],
+      "devaTiles": [
+        "हाँ"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-006",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Nahin",
+      "deva": "नहीं",
+      "english": "No",
+      "notes": "",
+      "tiles": [
+        "Nahin"
+      ],
+      "devaTiles": [
+        "नहीं"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-007",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Dhanyavaad",
+      "deva": "धन्यवाद",
+      "english": "Thank you",
+      "notes": "Formal. Many families say shukriya or just 'thank you'.",
+      "tiles": [
+        "Dhanyavaad"
+      ],
+      "devaTiles": [
+        "धन्यवाद"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-008",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Maaf kijiye",
+      "deva": "माफ़ कीजिए",
+      "english": "Sorry / excuse me",
+      "notes": "",
+      "tiles": [
+        "Maaf",
+        "kijiye"
+      ],
+      "devaTiles": [
+        "माफ़",
+        "कीजिए"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-009",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Phir milenge",
+      "deva": "फिर मिलेंगे",
+      "english": "See you again",
+      "notes": "",
+      "tiles": [
+        "Phir",
+        "milenge"
+      ],
+      "devaTiles": [
+        "फिर",
+        "मिलेंगे"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-010",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Accha, chalte hain",
+      "deva": "अच्छा, चलते हैं",
+      "english": "Right, we'll be off",
+      "notes": "What people say when leaving someone's home.",
+      "tiles": [
+        "Accha,",
+        "chalte",
+        "hain"
+      ],
+      "devaTiles": [
+        "अच्छा,",
+        "चलते",
+        "हैं"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-011",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "hear",
+      "context": "Someone greeting you at the door",
+      "roman": "Kya haal hai?",
+      "deva": "क्या हाल है?",
+      "english": "How are things?",
+      "notes": "",
+      "tiles": [
+        "Kya",
+        "haal",
+        "hai?"
+      ],
+      "devaTiles": [
+        "क्या",
+        "हाल",
+        "है?"
+      ],
+      "replies": [
+        "greet-004"
+      ],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "greet-012",
+      "pack": "greet",
+      "priority": "later",
+      "direction": "say",
+      "context": "",
+      "roman": "Mera naam Euan hai",
+      "deva": "मेरा नाम यूअन है",
+      "english": "My name is Euan",
+      "notes": "Useful with extended family at weddings.",
+      "tiles": [
+        "Mera",
+        "naam",
+        "Euan",
+        "hai"
+      ],
+      "devaTiles": [
+        "मेरा",
+        "नाम",
+        "यूअन",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "surv-001",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Mujhe thodi Hindi aati hai",
+      "deva": "मुझे थोड़ी हिंदी आती है",
+      "english": "I know a little Hindi",
+      "notes": "People slow down when they hear this.",
+      "tiles": [
+        "Mujhe",
+        "thodi",
+        "Hindi",
+        "aati",
+        "hai"
+      ],
+      "devaTiles": [
+        "मुझे",
+        "थोड़ी",
+        "हिंदी",
+        "आती",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "surv-002",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Thoda dheere boliye",
+      "deva": "थोड़ा धीरे बोलिए",
+      "english": "Please speak a bit slower",
+      "notes": "Polite -iye ending, for elders.",
+      "tiles": [
+        "Thoda",
+        "dheere",
+        "boliye"
+      ],
+      "devaTiles": [
+        "थोड़ा",
+        "धीरे",
+        "बोलिए"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "surv-003",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Mujhe samajh nahin aaya",
+      "deva": "मुझे समझ नहीं आया",
+      "english": "I didn't understand",
+      "notes": "",
+      "tiles": [
+        "Mujhe",
+        "samajh",
+        "nahin",
+        "aaya"
+      ],
+      "devaTiles": [
+        "मुझे",
+        "समझ",
+        "नहीं",
+        "आया"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "surv-004",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Phir se boliye",
+      "deva": "फिर से बोलिए",
+      "english": "Please say that again",
+      "notes": "",
+      "tiles": [
+        "Phir",
+        "se",
+        "boliye"
+      ],
+      "devaTiles": [
+        "फिर",
+        "से",
+        "बोलिए"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "surv-005",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Iska matlab kya hai?",
+      "deva": "इसका मतलब क्या है?",
+      "english": "What does this mean?",
+      "notes": "",
+      "tiles": [
+        "Iska",
+        "matlab",
+        "kya",
+        "hai?"
+      ],
+      "devaTiles": [
+        "इसका",
+        "मतलब",
+        "क्या",
+        "है?"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "surv-006",
+      "pack": "surv",
+      "priority": "later",
+      "direction": "say",
+      "context": "",
+      "roman": "Hindi mein ise kya kehte hain?",
+      "deva": "हिंदी में इसे क्या कहते हैं?",
+      "english": "What's this called in Hindi?",
+      "notes": "",
+      "tiles": [
+        "Hindi",
+        "mein",
+        "ise",
+        "kya",
+        "kehte",
+        "hain?"
+      ],
+      "devaTiles": [
+        "हिंदी",
+        "में",
+        "इसे",
+        "क्या",
+        "कहते",
+        "हैं?"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "surv-007",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "hear",
+      "context": "Someone checking after explaining something",
+      "roman": "Samajh gaye?",
+      "deva": "समझ गए?",
+      "english": "Did you understand?",
+      "notes": "",
+      "tiles": [
+        "Samajh",
+        "gaye?"
+      ],
+      "devaTiles": [
+        "समझ",
+        "गए?"
+      ],
+      "replies": [
+        "surv-008",
+        "surv-003"
+      ],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "surv-008",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Haan, samajh gaya",
+      "deva": "हाँ, समझ गया",
+      "english": "Yes, I understood",
+      "notes": "Gaya because you're a man. A woman would say gayi.",
+      "tiles": [
+        "Haan,",
+        "samajh",
+        "gaya"
+      ],
+      "devaTiles": [
+        "हाँ,",
+        "समझ",
+        "गया"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-001",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Nani",
+      "deva": "नानी",
+      "english": "Grandmother (mother's mother)",
+      "notes": "Add -ji for respect: Nani-ji.",
+      "tiles": [
+        "Nani"
+      ],
+      "devaTiles": [
+        "नानी"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-002",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Nana",
+      "deva": "नाना",
+      "english": "Grandfather (mother's father)",
+      "notes": "",
+      "tiles": [
+        "Nana"
+      ],
+      "devaTiles": [
+        "नाना"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-003",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Dadi",
+      "deva": "दादी",
+      "english": "Grandmother (father's mother)",
+      "notes": "",
+      "tiles": [
+        "Dadi"
+      ],
+      "devaTiles": [
+        "दादी"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-004",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Dada",
+      "deva": "दादा",
+      "english": "Grandfather (father's father)",
+      "notes": "",
+      "tiles": [
+        "Dada"
+      ],
+      "devaTiles": [
+        "दादा"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-005",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Mama",
+      "deva": "मामा",
+      "english": "Uncle (mother's brother)",
+      "notes": "",
+      "tiles": [
+        "Mama"
+      ],
+      "devaTiles": [
+        "मामा"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-006",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Mausi",
+      "deva": "मौसी",
+      "english": "Aunt (mother's sister)",
+      "notes": "",
+      "tiles": [
+        "Mausi"
+      ],
+      "devaTiles": [
+        "मौसी"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-007",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Chacha",
+      "deva": "चाचा",
+      "english": "Uncle (father's younger brother)",
+      "notes": "",
+      "tiles": [
+        "Chacha"
+      ],
+      "devaTiles": [
+        "चाचा"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-008",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bua",
+      "deva": "बुआ",
+      "english": "Aunt (father's sister)",
+      "notes": "",
+      "tiles": [
+        "Bua"
+      ],
+      "devaTiles": [
+        "बुआ"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-009",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Mummy ji",
+      "deva": "मम्मी जी",
+      "english": "What you call your mother-in-law",
+      "notes": "Families vary. Some say Mummy/Papa, others Maa/Pitaji.",
+      "tiles": [
+        "Mummy",
+        "ji"
+      ],
+      "devaTiles": [
+        "मम्मी",
+        "जी"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-010",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Papa ji",
+      "deva": "पापा जी",
+      "english": "What you call your father-in-law",
+      "notes": "Families vary. Some say Mummy/Papa, others Maa/Pitaji.",
+      "tiles": [
+        "Papa",
+        "ji"
+      ],
+      "devaTiles": [
+        "पापा",
+        "जी"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-011",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Ye meri patni hain",
+      "deva": "ये मेरी पत्नी हैं",
+      "english": "This is my wife",
+      "notes": "Hain (not hai) shows respect.",
+      "tiles": [
+        "Ye",
+        "meri",
+        "patni",
+        "hain"
+      ],
+      "devaTiles": [
+        "ये",
+        "मेरी",
+        "पत्नी",
+        "हैं"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "family-012",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aapka naam kya hai?",
+      "deva": "आपका नाम क्या है?",
+      "english": "What's your name?",
+      "notes": "",
+      "tiles": [
+        "Aapka",
+        "naam",
+        "kya",
+        "hai?"
+      ],
+      "devaTiles": [
+        "आपका",
+        "नाम",
+        "क्या",
+        "है?"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-001",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Khaana bahut swaadisht hai",
+      "deva": "खाना बहुत स्वादिष्ट है",
+      "english": "The food is very tasty",
+      "notes": "A little formal. See also 'Bahut accha bana hai'.",
+      "tiles": [
+        "Khaana",
+        "bahut",
+        "swaadisht",
+        "hai"
+      ],
+      "devaTiles": [
+        "खाना",
+        "बहुत",
+        "स्वादिष्ट",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-002",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bas, pet bhar gaya",
+      "deva": "बस, पेट भर गया",
+      "english": "Enough, I'm full",
+      "notes": "You'll need this a lot. Aunties may not accept the first one.",
+      "tiles": [
+        "Bas,",
+        "pet",
+        "bhar",
+        "gaya"
+      ],
+      "devaTiles": [
+        "बस,",
+        "पेट",
+        "भर",
+        "गया"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-003",
+      "pack": "food",
+      "priority": "core",
+      "direction": "hear",
+      "context": "An aunty holds out the serving spoon",
+      "roman": "Aur lijiye!",
+      "deva": "और लीजिए!",
+      "english": "Have some more!",
+      "notes": "",
+      "tiles": [
+        "Aur",
+        "lijiye!"
+      ],
+      "devaTiles": [
+        "और",
+        "लीजिए!"
+      ],
+      "replies": [
+        "food-002",
+        "food-004",
+        "food-010"
+      ],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-004",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Thoda aur",
+      "deva": "थोड़ा और",
+      "english": "A little more",
+      "notes": "",
+      "tiles": [
+        "Thoda",
+        "aur"
+      ],
+      "devaTiles": [
+        "थोड़ा",
+        "और"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-005",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Paani dijiye",
+      "deva": "पानी दीजिए",
+      "english": "Water, please",
+      "notes": "",
+      "tiles": [
+        "Paani",
+        "dijiye"
+      ],
+      "devaTiles": [
+        "पानी",
+        "दीजिए"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-006",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bahut teekha hai",
+      "deva": "बहुत तीखा है",
+      "english": "It's very spicy",
+      "notes": "",
+      "tiles": [
+        "Bahut",
+        "teekha",
+        "hai"
+      ],
+      "devaTiles": [
+        "बहुत",
+        "तीखा",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-007",
+      "pack": "food",
+      "priority": "core",
+      "direction": "hear",
+      "context": "Nani on the phone",
+      "roman": "Khaana kha liya?",
+      "deva": "खाना खा लिया?",
+      "english": "Have you eaten?",
+      "notes": "A very common way to show care.",
+      "tiles": [
+        "Khaana",
+        "kha",
+        "liya?"
+      ],
+      "devaTiles": [
+        "खाना",
+        "खा",
+        "लिया?"
+      ],
+      "replies": [
+        "food-008"
+      ],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-008",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Haan, kha liya",
+      "deva": "हाँ, खा लिया",
+      "english": "Yes, I've eaten",
+      "notes": "",
+      "tiles": [
+        "Haan,",
+        "kha",
+        "liya"
+      ],
+      "devaTiles": [
+        "हाँ,",
+        "खा",
+        "लिया"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-009",
+      "pack": "food",
+      "priority": "core",
+      "direction": "hear",
+      "context": "An uncle heading to the kitchen",
+      "roman": "Chai piyoge?",
+      "deva": "चाय पियोगे?",
+      "english": "Will you have some tea?",
+      "notes": "Familiar tum form, how elders talk to younger people.",
+      "tiles": [
+        "Chai",
+        "piyoge?"
+      ],
+      "devaTiles": [
+        "चाय",
+        "पियोगे?"
+      ],
+      "replies": [
+        "food-010"
+      ],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-010",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Haan, thodi si",
+      "deva": "हाँ, थोड़ी सी",
+      "english": "Yes, just a little",
+      "notes": "",
+      "tiles": [
+        "Haan,",
+        "thodi",
+        "si"
+      ],
+      "devaTiles": [
+        "हाँ,",
+        "थोड़ी",
+        "सी"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-011",
+      "pack": "food",
+      "priority": "core",
+      "direction": "hear",
+      "context": "Your plate is nearly empty",
+      "roman": "Khao, khao!",
+      "deva": "खाओ, खाओ!",
+      "english": "Eat, eat!",
+      "notes": "",
+      "tiles": [
+        "Khao,",
+        "khao!"
+      ],
+      "devaTiles": [
+        "खाओ,",
+        "खाओ!"
+      ],
+      "replies": [
+        "food-002",
+        "food-004"
+      ],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "food-012",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bahut accha bana hai",
+      "deva": "बहुत अच्छा बना है",
+      "english": "It's turned out really well",
+      "notes": "Warm praise for home cooking.",
+      "tiles": [
+        "Bahut",
+        "accha",
+        "bana",
+        "hai"
+      ],
+      "devaTiles": [
+        "बहुत",
+        "अच्छा",
+        "बना",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "talk-001",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "hear",
+      "context": "After a meal or an outing",
+      "roman": "Kaisa laga?",
+      "deva": "कैसा लगा?",
+      "english": "How did you like it?",
+      "notes": "",
+      "tiles": [
+        "Kaisa",
+        "laga?"
+      ],
+      "devaTiles": [
+        "कैसा",
+        "लगा?"
+      ],
+      "replies": [
+        "talk-002"
+      ],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "talk-002",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bahut accha laga",
+      "deva": "बहुत अच्छा लगा",
+      "english": "I liked it a lot",
+      "notes": "",
+      "tiles": [
+        "Bahut",
+        "accha",
+        "laga"
+      ],
+      "devaTiles": [
+        "बहुत",
+        "अच्छा",
+        "लगा"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "talk-003",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "both",
+      "context": "You've just arrived",
+      "roman": "Safar kaisa tha?",
+      "deva": "सफ़र कैसा था?",
+      "english": "How was the journey?",
+      "notes": "",
+      "tiles": [
+        "Safar",
+        "kaisa",
+        "tha?"
+      ],
+      "devaTiles": [
+        "सफ़र",
+        "कैसा",
+        "था?"
+      ],
+      "replies": [
+        "talk-004"
+      ],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "talk-004",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Safar accha tha",
+      "deva": "सफ़र अच्छा था",
+      "english": "The journey was good",
+      "notes": "",
+      "tiles": [
+        "Safar",
+        "accha",
+        "tha"
+      ],
+      "devaTiles": [
+        "सफ़र",
+        "अच्छा",
+        "था"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "talk-005",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "both",
+      "context": "",
+      "roman": "Kaam kaisa chal raha hai?",
+      "deva": "काम कैसा चल रहा है?",
+      "english": "How's work going?",
+      "notes": "",
+      "tiles": [
+        "Kaam",
+        "kaisa",
+        "chal",
+        "raha",
+        "hai?"
+      ],
+      "devaTiles": [
+        "काम",
+        "कैसा",
+        "चल",
+        "रहा",
+        "है?"
+      ],
+      "replies": [
+        "talk-006"
+      ],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "talk-006",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Sab theek chal raha hai",
+      "deva": "सब ठीक चल रहा है",
+      "english": "Everything's going fine",
+      "notes": "",
+      "tiles": [
+        "Sab",
+        "theek",
+        "chal",
+        "raha",
+        "hai"
+      ],
+      "devaTiles": [
+        "सब",
+        "ठीक",
+        "चल",
+        "रहा",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "talk-007",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "hear",
+      "context": "",
+      "roman": "Baitho, beta",
+      "deva": "बैठो, बेटा",
+      "english": "Sit down, dear",
+      "notes": "Beta (child) is used fondly for anyone younger, including you.",
+      "tiles": [
+        "Baitho,",
+        "beta"
+      ],
+      "devaTiles": [
+        "बैठो,",
+        "बेटा"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "talk-008",
+      "pack": "talk",
+      "priority": "later",
+      "direction": "say",
+      "context": "",
+      "roman": "Aap kahaan se hain?",
+      "deva": "आप कहाँ से हैं?",
+      "english": "Where are you from?",
+      "notes": "",
+      "tiles": [
+        "Aap",
+        "kahaan",
+        "se",
+        "hain?"
+      ],
+      "devaTiles": [
+        "आप",
+        "कहाँ",
+        "से",
+        "हैं?"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "warm-001",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aapse milkar khushi hui",
+      "deva": "आपसे मिलकर ख़ुशी हुई",
+      "english": "Happy to meet you",
+      "notes": "",
+      "tiles": [
+        "Aapse",
+        "milkar",
+        "khushi",
+        "hui"
+      ],
+      "devaTiles": [
+        "आपसे",
+        "मिलकर",
+        "ख़ुशी",
+        "हुई"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "warm-002",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aapka ghar bahut sundar hai",
+      "deva": "आपका घर बहुत सुंदर है",
+      "english": "Your home is lovely",
+      "notes": "",
+      "tiles": [
+        "Aapka",
+        "ghar",
+        "bahut",
+        "sundar",
+        "hai"
+      ],
+      "devaTiles": [
+        "आपका",
+        "घर",
+        "बहुत",
+        "सुंदर",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "warm-003",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aap bahut acchi lag rahi hain",
+      "deva": "आप बहुत अच्छी लग रही हैं",
+      "english": "You look very well (to a woman)",
+      "notes": "",
+      "tiles": [
+        "Aap",
+        "bahut",
+        "acchi",
+        "lag",
+        "rahi",
+        "hain"
+      ],
+      "devaTiles": [
+        "आप",
+        "बहुत",
+        "अच्छी",
+        "लग",
+        "रही",
+        "हैं"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "warm-004",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aap bahut acche lag rahe hain",
+      "deva": "आप बहुत अच्छे लग रहे हैं",
+      "english": "You look very well (to a man)",
+      "notes": "",
+      "tiles": [
+        "Aap",
+        "bahut",
+        "acche",
+        "lag",
+        "rahe",
+        "hain"
+      ],
+      "devaTiles": [
+        "आप",
+        "बहुत",
+        "अच्छे",
+        "लग",
+        "रहे",
+        "हैं"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "occ-001",
+      "pack": "occ",
+      "priority": "later",
+      "direction": "say",
+      "context": "",
+      "roman": "Janamdin mubaarak ho",
+      "deva": "जन्मदिन मुबारक हो",
+      "english": "Happy birthday",
+      "notes": "Many families just say 'happy birthday'.",
+      "tiles": [
+        "Janamdin",
+        "mubaarak",
+        "ho"
+      ],
+      "devaTiles": [
+        "जन्मदिन",
+        "मुबारक",
+        "हो"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "occ-002",
+      "pack": "occ",
+      "priority": "later",
+      "direction": "say",
+      "context": "",
+      "roman": "Diwali ki shubhkaamnaayein",
+      "deva": "दिवाली की शुभकामनाएँ",
+      "english": "Happy Diwali",
+      "notes": "Formal. 'Happy Diwali' is common too.",
+      "tiles": [
+        "Diwali",
+        "ki",
+        "shubhkaamnaayein"
+      ],
+      "devaTiles": [
+        "दिवाली",
+        "की",
+        "शुभकामनाएँ"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "occ-003",
+      "pack": "occ",
+      "priority": "later",
+      "direction": "say",
+      "context": "",
+      "roman": "Holi mubaarak ho",
+      "deva": "होली मुबारक हो",
+      "english": "Happy Holi",
+      "notes": "",
+      "tiles": [
+        "Holi",
+        "mubaarak",
+        "ho"
+      ],
+      "devaTiles": [
+        "होली",
+        "मुबारक",
+        "हो"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "occ-004",
+      "pack": "occ",
+      "priority": "core",
+      "direction": "hear",
+      "context": "",
+      "roman": "Jeete raho",
+      "deva": "जीते रहो",
+      "english": "Bless you (live long)",
+      "notes": "What elders say when you greet them respectfully.",
+      "tiles": [
+        "Jeete",
+        "raho"
+      ],
+      "devaTiles": [
+        "जीते",
+        "रहो"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    },
+    {
+      "id": "occ-005",
+      "pack": "occ",
+      "priority": "core",
+      "direction": "hear",
+      "context": "",
+      "roman": "Khush raho",
+      "deva": "ख़ुश रहो",
+      "english": "Be happy (a blessing)",
+      "notes": "",
+      "tiles": [
+        "Khush",
+        "raho"
+      ],
+      "devaTiles": [
+        "ख़ुश",
+        "रहो"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": false
+    }
+  ],
+  "wordAudio": []
+}

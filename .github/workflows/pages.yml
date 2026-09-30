@@ -1,0 +1,46 @@
+# Builds the app and publishes it to GitHub Pages on every push to main.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+      - uses: cargo-bins/cargo-binstall@main
+      - run: cargo binstall -y dioxus-cli@0.7.10
+      - run: cargo test -p baatcheet-core
+      - run: cargo run -p baatcheet-tools --bin build-content
+      - run: dx bundle --platform web --release --base-path "${{ github.event.repository.name }}"
+        working-directory: app
+      - run: cargo run -p baatcheet-tools --bin stamp-sw
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: target/dx/baatcheet/release/web/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
