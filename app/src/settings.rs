@@ -197,6 +197,21 @@ pub fn SettingsScreen() -> Element {
                     b { "{total}" }
                 }
                 div { class: "set-row",
+                    div { "Test the voice" small { "Says नमस्ते and shows what this phone reports" } }
+                    button {
+                        class: "mini",
+                        onclick: move |_| {
+                            platform::speak("नमस्ते", false);
+                            spawn(async move {
+                                // Give an error a moment to arrive before reporting.
+                                platform::sleep(1500).await;
+                                ctx.show_toast(platform::speech_report());
+                            });
+                        },
+                        "Test"
+                    }
+                }
+                div { class: "set-row",
                     div { "Audio"
                         small {
                             if with_audio > 0 { "{with_audio} recorded clips. " }

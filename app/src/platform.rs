@@ -7,7 +7,7 @@ use std::cell::RefCell;
 use wasm_bindgen::JsCast;
 use wasm_bindgen::prelude::wasm_bindgen;
 use wasm_bindgen_futures::JsFuture;
-use web_sys::{HtmlAudioElement, SpeechSynthesisUtterance};
+use web_sys::HtmlAudioElement;
 
 const PROGRESS_KEY: &str = "baatcheet.progress";
 const SETTINGS_KEY: &str = "baatcheet.settings";
@@ -291,41 +291,81 @@ fn play_clip(url: &str, fallback: &str, slow: bool) {
     });
 }
 
-fn stop_speech() {
-    if let Ok(synth) = window().speech_synthesis() {
-        synth.cancel();
-    }
+// Speech is done in JavaScript: iOS has quirks the Rust bindings make awkward
+// to work around, and they're easier to read here.
+#[wasm_bindgen(inline_js = r#"
+let lastError = '';
+
+function hindiVoice() {
+  return speechSynthesis.getVoices().find((v) => /^hi([-_]|$)/i.test(v.lang));
 }
 
-fn hindi_voice() -> Option<web_sys::SpeechSynthesisVoice> {
-    let synth = window().speech_synthesis().ok()?;
-    synth
-        .get_voices()
-        .iter()
-        .filter_map(|v| v.dyn_into::<web_sys::SpeechSynthesisVoice>().ok())
-        .find(|v| {
-            let lang = v.lang().to_lowercase();
-            lang == "hi" || lang.starts_with("hi-") || lang.starts_with("hi_")
-        })
+export function speakHindi(text, rate) {
+  const synth = window.speechSynthesis;
+  if (!synth) { lastError = 'This browser has no speech'; return; }
+  // iOS 17+: play even when the ring/silent switch is on silent.
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'hi-IN';
+  const voice = hindiVoice();
+  if (voice) u.voice = voice;
+  u.rate = rate;
+  u.onerror = (e) => { lastError = e.error || 'unknown error'; };
+  u.onstart = () => { lastError = ''; };
+  // iOS Safari drops an utterance spoken straight after cancel(), so only
+  // cancel when something is actually playing, and then wait a moment.
+  if (synth.speaking || synth.pending) {
+    synth.cancel();
+    setTimeout(() => synth.speak(u), 80);
+  } else {
+    synth.speak(u);
+  }
+  if (synth.paused) synth.resume();
+}
+
+export function stopSpeech() {
+  const synth = window.speechSynthesis;
+  if (synth && (synth.speaking || synth.pending)) synth.cancel();
+}
+
+export function hindiVoiceName() {
+  const v = window.speechSynthesis && hindiVoice();
+  return v ? v.name : '';
+}
+
+// What the phone reports, for the "Test the voice" button.
+export function speechReport() {
+  const synth = window.speechSynthesis;
+  if (!synth) return 'No speech support in this browser.';
+  const voices = synth.getVoices();
+  const hindi = voices.filter((v) => /^hi([-_]|$)/i.test(v.lang)).map((v) => v.name);
+  const parts = [
+    hindi.length ? `Hindi voice: ${hindi.join(', ')}.` : `No Hindi voice among ${voices.length} voices.`,
+  ];
+  if (lastError) parts.push(`Last error: ${lastError}.`);
+  return parts.join(' ');
+}
+"#)]
+extern "C" {
+    #[wasm_bindgen(js_name = speakHindi)]
+    fn speak_hindi(text: &str, rate: f32);
+    #[wasm_bindgen(js_name = stopSpeech)]
+    fn stop_speech();
+    #[wasm_bindgen(js_name = hindiVoiceName)]
+    fn hindi_voice_name_js() -> String;
+    #[wasm_bindgen(js_name = speechReport)]
+    pub fn speech_report() -> String;
 }
 
 /// Name of the device's Hindi voice, if it has one. `None` can also mean the
 /// voice list hasn't loaded yet.
 pub fn hindi_voice_name() -> Option<String> {
-    hindi_voice().map(|v| v.name())
+    Some(hindi_voice_name_js()).filter(|n| !n.is_empty())
 }
 
 pub fn speak(text: &str, slow: bool) {
     with_player(|el| {
         let _ = el.pause();
     });
-    let Ok(synth) = window().speech_synthesis() else { return };
-    synth.cancel();
-    let Ok(u) = SpeechSynthesisUtterance::new_with_text(text) else { return };
-    u.set_lang("hi-IN");
-    if let Some(v) = hindi_voice() {
-        u.set_voice(Some(&v));
-    }
-    u.set_rate(if slow { 0.6 } else { 0.9 });
-    synth.speak(&u);
+    speak_hindi(text, if slow { 0.6 } else { 0.9 });
 }
