@@ -195,13 +195,13 @@ fn main() -> ExitCode {
         }
     }
 
-    // 5. Replies exist and are things Euan says.
+    // 5. Replies exist and are things the learner says.
     for p in &phrases {
         for reply in &p.replies {
             match phrases.iter().find(|q| &q.id == reply) {
                 None => errors.push(format!("{}: reply {reply} doesn't exist", p.id)),
                 Some(q) if !q.direction.is_said() => {
-                    errors.push(format!("{}: reply {reply} is hear-only, so Euan can't say it", p.id))
+                    errors.push(format!("{}: reply {reply} is hear-only, so the learner can't say it", p.id))
                 }
                 _ => {}
             }

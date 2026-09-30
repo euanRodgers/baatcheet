@@ -9,7 +9,7 @@ pub enum Priority {
     Later,
 }
 
-/// Who says the phrase. Euan only produces `Say` and `Both` phrases.
+/// Who says the phrase. The learner only produces `Say` and `Both` phrases.
 #[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq, Eq)]
 #[serde(rename_all = "lowercase")]
 pub enum Direction {

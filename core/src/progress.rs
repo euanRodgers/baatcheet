@@ -1,4 +1,4 @@
-//! What Euan has learned, saved on the device.
+//! What the learner has learned, saved on the device.
 
 use crate::content::{Content, PACKS};
 use crate::date::Date;
@@ -38,13 +38,13 @@ pub struct PhraseProgress {
     pub seen: u32,
     #[serde(default)]
     pub wrong: u32,
-    /// The day Euan first met the phrase. Used for the daily limit on new phrases.
+    /// The day the learner first met the phrase. Used for the daily limit on new phrases.
     #[serde(default)]
     pub met: Option<Date>,
 }
 
 impl PhraseProgress {
-    /// A phrase Euan has just met. It's due again in the same session.
+    /// A phrase the learner has just met. It's due again in the same session.
     pub fn met(today: Date) -> PhraseProgress {
         PhraseProgress { box_: 0, due: today, seen: 0, wrong: 0, met: Some(today) }
     }

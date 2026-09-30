@@ -73,7 +73,7 @@ fn CardBody(card: Card) -> Element {
                     span { class: "chip hear", "You'll hear this" }
                 }
             }
-            // The scene only makes sense when someone is saying this to Euan.
+            // The scene only makes sense when someone is saying this to the learner.
             if !p.context.is_empty() && p.direction.is_heard() {
                 div { class: "ctx", "{p.context}" }
             }

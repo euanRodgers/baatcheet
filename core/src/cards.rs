@@ -21,7 +21,7 @@ pub enum CardKind {
 }
 
 impl CardKind {
-    /// Cards where Euan is listening to someone else. Only these show the
+    /// Cards where the learner is listening to someone else. Only these show the
     /// phrase's scene ("An aunty holds out the serving spoon").
     pub fn is_listening(self) -> bool {
         matches!(self, CardKind::Meet | CardKind::ListenMeaning | CardKind::PickHindi | CardKind::Respond)
@@ -139,7 +139,7 @@ pub fn exercise_for(phrase: &Phrase, progress: Option<&PhraseProgress>) -> CardK
             let can_build = phrase.tiles.len() >= 2;
             match p.box_ {
                 0 | 1 => CardKind::ListenMeaning,
-                // A "both" phrase is also said to Euan, so it can be the prompt on a Respond card.
+                // A "both" phrase is also said to the learner, so it can be the prompt on a Respond card.
                 2 if alternate && has_replies && phrase.direction == Direction::Both => CardKind::Respond,
                 2 => CardKind::PickHindi,
                 3 if can_build => CardKind::Build,

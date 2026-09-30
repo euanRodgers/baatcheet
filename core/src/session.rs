@@ -135,7 +135,7 @@ impl Session {
         self.pos >= self.cards.len()
     }
 
-    /// Euan tapped "Got it" on a Meet card.
+    /// The learner tapped "Got it" on a Meet card.
     pub fn meet(&mut self, progress: &mut Progress, today: Date) {
         let Some(card) = self.current() else { return };
         let id = card.phrase_id.clone();
@@ -210,7 +210,7 @@ impl Session {
     }
 }
 
-/// Phrases Euan has met, soonest due first.
+/// Phrases the learner has met, soonest due first.
 fn with_progress<'a>(content: &'a Content, progress: &'a Progress) -> Vec<(&'a Phrase, &'a PhraseProgress)> {
     let mut out: Vec<_> = content
         .phrases
