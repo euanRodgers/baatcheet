@@ -6,7 +6,7 @@
 //!   --approved-only  leave out draft phrases
 //!   --strict         treat missing audio as an error, not a warning
 
-use baatcheet_core::content::{Content, Direction, Phrase, Priority, Status, PACKS, normalize_word, roman_words};
+use baatcheet_core::content::{Content, Direction, Form, Phrase, Priority, Status, PACKS, normalize_word, roman_words};
 use baatcheet_tools::{has_flag, mp3_stems, path_arg};
 use serde::Deserialize;
 use std::collections::{BTreeMap, HashSet};
@@ -14,6 +14,7 @@ use std::process::ExitCode;
 
 /// One row of `content/phrases.csv`. Tiles are the words of `roman` and `deva`
 /// unless the optional `tiles` / `deva_tiles` columns (split on `|`) say otherwise.
+/// The optional `*_f` columns hold the version for a woman learner.
 #[derive(Deserialize)]
 struct Row {
     id: String,
@@ -34,6 +35,14 @@ struct Row {
     tiles: String,
     #[serde(default)]
     deva_tiles: String,
+    #[serde(default)]
+    roman_f: String,
+    #[serde(default)]
+    deva_f: String,
+    #[serde(default)]
+    english_f: String,
+    #[serde(default)]
+    notes_f: String,
 }
 
 fn split_tiles(explicit: &str, text: &str) -> Vec<String> {
@@ -76,6 +85,22 @@ fn main() -> ExitCode {
         if approved_only && row.status == Status::Draft {
             continue;
         }
+        let female = if row.roman_f.trim().is_empty() && row.deva_f.trim().is_empty() {
+            None
+        } else {
+            if row.roman_f.trim().is_empty() || row.deva_f.trim().is_empty() {
+                errors.push(format!("{}: a woman's form needs both roman_f and deva_f", row.id.trim()));
+            }
+            Some(Form {
+                roman: row.roman_f.trim().to_string(),
+                deva: row.deva_f.trim().to_string(),
+                english: if row.english_f.trim().is_empty() { row.english.trim() } else { row.english_f.trim() }.to_string(),
+                notes: row.notes_f.trim().to_string(),
+                tiles: split_tiles("", &row.roman_f),
+                deva_tiles: split_tiles("", &row.deva_f),
+                audio: false,
+            })
+        };
         phrases.push(Phrase {
             tiles: split_tiles(&row.tiles, &row.roman),
             deva_tiles: split_tiles(&row.deva_tiles, &row.deva),
@@ -91,6 +116,8 @@ fn main() -> ExitCode {
             notes: row.notes.trim().to_string(),
             status: row.status,
             audio: false,
+            female,
+            female_form: false,
         });
     }
 
@@ -115,15 +142,30 @@ fn main() -> ExitCode {
         }
     }
 
-    // 2. Tiles spell the phrase.
+    // Checks 2–4 cover the woman's forms too.
+    struct Words<'a> {
+        id: String,
+        roman: &'a str,
+        tiles: &'a [String],
+        deva_tiles: &'a [String],
+    }
+    let mut forms: Vec<Words> = Vec::new();
     for p in &phrases {
-        if roman_words(&p.tiles.join(" ")) != roman_words(&p.roman) {
+        forms.push(Words { id: p.id.clone(), roman: &p.roman, tiles: &p.tiles, deva_tiles: &p.deva_tiles });
+        if let Some(f) = &p.female {
+            forms.push(Words { id: format!("{} (woman's form)", p.id), roman: &f.roman, tiles: &f.tiles, deva_tiles: &f.deva_tiles });
+        }
+    }
+
+    // 2. Tiles spell the phrase.
+    for p in &forms {
+        if roman_words(&p.tiles.join(" ")) != roman_words(p.roman) {
             errors.push(format!("{}: tiles {:?} don't spell \"{}\"", p.id, p.tiles, p.roman));
         }
     }
 
     // 3. Every romanised tile has a Devanagari partner.
-    for p in &phrases {
+    for p in &forms {
         if p.tiles.len() != p.deva_tiles.len() {
             errors.push(format!(
                 "{}: {} romanised words but {} Devanagari words. Add tiles/deva_tiles columns split with |",
@@ -136,8 +178,8 @@ fn main() -> ExitCode {
 
     // 4. Each Devanagari word has one romanised spelling across the whole file.
     let mut spellings: BTreeMap<String, BTreeMap<String, Vec<String>>> = BTreeMap::new();
-    for p in &phrases {
-        for (r, d) in p.tiles.iter().zip(&p.deva_tiles) {
+    for p in &forms {
+        for (r, d) in p.tiles.iter().zip(p.deva_tiles) {
             spellings
                 .entry(normalize_word(d))
                 .or_default()
@@ -166,17 +208,34 @@ fn main() -> ExitCode {
         }
     }
 
-    // 6. Audio: approved phrases have a clip, and no clip is orphaned.
+    // 6. Audio: approved phrases have a clip (a woman's form has its own,
+    // `{id}-f.mp3`), and no clip is orphaned. Phrases with the learner's name
+    // can't be recorded, so they always use the device voice.
     let clips = mp3_stems(&audio_dir);
     for p in phrases.iter_mut() {
+        if p.is_personal() {
+            continue;
+        }
         p.audio = clips.contains(&p.id);
-        if !p.audio && p.status != Status::Draft {
-            let msg = format!("{}: approved but has no audio/{}.mp3", p.id, p.id);
+        let female_clip = format!("{}-f", p.id);
+        let mut missing = vec![];
+        if !p.audio {
+            missing.push(format!("audio/{}.mp3", p.id));
+        }
+        if let Some(f) = p.female.as_mut() {
+            f.audio = clips.contains(&female_clip);
+            if !f.audio {
+                missing.push(format!("audio/{female_clip}.mp3"));
+            }
+        }
+        if !missing.is_empty() && p.status != Status::Draft {
+            let msg = format!("{}: approved but has no {}", p.id, missing.join(" or "));
             if strict { errors.push(msg) } else { warnings.push(msg) }
         }
     }
     for clip in &clips {
-        if !phrases.iter().any(|p| &p.id == clip) {
+        let known = phrases.iter().any(|p| *clip == p.id || (p.female.is_some() && *clip == format!("{}-f", p.id)));
+        if !known {
             warnings.push(format!("audio/{clip}.mp3 doesn't match any phrase"));
         }
     }

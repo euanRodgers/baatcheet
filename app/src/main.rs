@@ -2,6 +2,7 @@
 
 mod book;
 mod home;
+mod onboarding;
 mod platform;
 mod session_view;
 mod settings;
@@ -59,7 +60,8 @@ impl Live {
 /// App state shared by every screen. Signals are cheap to copy.
 #[derive(Clone, Copy)]
 pub struct Ctx {
-    pub content: Signal<Content>,
+    /// Phrases adapted to the learner (their name, and woman's forms for a woman).
+    pub content: Memo<Content>,
     pub progress: Signal<Progress>,
     pub settings: Signal<Settings>,
     pub screen: Signal<Screen>,
@@ -176,10 +178,19 @@ fn Root() -> Element {
 
 #[component]
 fn App(content: Content) -> Element {
+    let base = use_signal(|| content.clone());
+    let settings = use_signal(platform::load_settings);
+    let adapted = use_memo(move || {
+        let learner = settings.read().learner();
+        match learner {
+            Some(l) => base.read().for_learner(&l),
+            None => base.read().clone(),
+        }
+    });
     let ctx = Ctx {
-        content: use_signal(|| content.clone()),
+        content: adapted,
         progress: use_signal(platform::load_progress),
-        settings: use_signal(platform::load_settings),
+        settings,
         screen: use_signal(|| Screen::Home),
         live: use_signal(|| None),
         toast: use_signal(|| None),
@@ -187,6 +198,9 @@ fn App(content: Content) -> Element {
     use_context_provider(|| ctx);
     let screen = *ctx.screen.read();
     let toast = ctx.toast.read().clone();
+    if ctx.settings.read().learner().is_none() {
+        return rsx! { div { class: "app", onboarding::Welcome {} } };
+    }
 
     rsx! {
         div { class: "app",

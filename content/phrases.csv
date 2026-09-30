@@ -1,62 +1,62 @@
-id,pack,priority,direction,roman,deva,english,notes,context,replies,status
-greet-001,greet,core,say,"Namaste","नमस्ते","Hello","Safe with everyone. Some families greet elders with Pranaam.","","",draft
-greet-002,greet,core,say,"Aap kaise hain?","आप कैसे हैं?","How are you? (to a man)","To a woman, say kaisi.","","",draft
-greet-003,greet,core,say,"Aap kaisi hain?","आप कैसी हैं?","How are you? (to a woman)","To a man, say kaise.","","",draft
-greet-004,greet,core,say,"Main theek hoon","मैं ठीक हूँ","I'm fine","Add 'aap?' to ask back.","","",draft
-greet-005,greet,core,say,"Haan","हाँ","Yes","","","",draft
-greet-006,greet,core,say,"Nahin","नहीं","No","","","",draft
-greet-007,greet,core,say,"Dhanyavaad","धन्यवाद","Thank you","Formal. Many families say shukriya or just 'thank you'.","","",draft
-greet-008,greet,core,say,"Maaf kijiye","माफ़ कीजिए","Sorry / excuse me","","","",draft
-greet-009,greet,core,say,"Phir milenge","फिर मिलेंगे","See you again","","","",draft
-greet-010,greet,core,say,"Accha, chalte hain","अच्छा, चलते हैं","Right, we'll be off","What people say when leaving someone's home.","","",draft
-greet-011,greet,core,hear,"Kya haal hai?","क्या हाल है?","How are things?","","Someone greeting you at the door","greet-004",draft
-greet-012,greet,later,say,"Mera naam Euan hai","मेरा नाम यूअन है","My name is Euan","Useful with extended family at weddings.","","",draft
-surv-001,surv,core,say,"Mujhe thodi Hindi aati hai","मुझे थोड़ी हिंदी आती है","I know a little Hindi","People slow down when they hear this.","","",draft
-surv-002,surv,core,say,"Thoda dheere boliye","थोड़ा धीरे बोलिए","Please speak a bit slower","Polite -iye ending, for elders.","","",draft
-surv-003,surv,core,say,"Mujhe samajh nahin aaya","मुझे समझ नहीं आया","I didn't understand","","","",draft
-surv-004,surv,core,say,"Phir se boliye","फिर से बोलिए","Please say that again","","","",draft
-surv-005,surv,core,say,"Iska matlab kya hai?","इसका मतलब क्या है?","What does this mean?","","","",draft
-surv-006,surv,later,say,"Hindi mein ise kya kehte hain?","हिंदी में इसे क्या कहते हैं?","What's this called in Hindi?","","","",draft
-surv-007,surv,core,hear,"Samajh gaye?","समझ गए?","Did you understand?","","Someone checking after explaining something","surv-008;surv-003",draft
-surv-008,surv,core,say,"Haan, samajh gaya","हाँ, समझ गया","Yes, I understood","Gaya because you're a man. A woman would say gayi.","","",draft
-family-001,family,core,say,"Nani","नानी","Grandmother (mother's mother)","Add -ji for respect: Nani-ji.","","",draft
-family-002,family,core,say,"Nana","नाना","Grandfather (mother's father)","","","",draft
-family-003,family,core,say,"Dadi","दादी","Grandmother (father's mother)","","","",draft
-family-004,family,core,say,"Dada","दादा","Grandfather (father's father)","","","",draft
-family-005,family,core,say,"Mama","मामा","Uncle (mother's brother)","","","",draft
-family-006,family,core,say,"Mausi","मौसी","Aunt (mother's sister)","","","",draft
-family-007,family,core,say,"Chacha","चाचा","Uncle (father's younger brother)","","","",draft
-family-008,family,core,say,"Bua","बुआ","Aunt (father's sister)","","","",draft
-family-009,family,core,say,"Mummy ji","मम्मी जी","What you call your mother-in-law","Families vary. Some say Mummy/Papa, others Maa/Pitaji.","","",draft
-family-010,family,core,say,"Papa ji","पापा जी","What you call your father-in-law","Families vary. Some say Mummy/Papa, others Maa/Pitaji.","","",draft
-family-011,family,core,say,"Ye meri patni hain","ये मेरी पत्नी हैं","This is my wife","Hain (not hai) shows respect.","","",draft
-family-012,family,core,say,"Aapka naam kya hai?","आपका नाम क्या है?","What's your name?","","","",draft
-food-001,food,core,say,"Khaana bahut swaadisht hai","खाना बहुत स्वादिष्ट है","The food is very tasty","A little formal. See also 'Bahut accha bana hai'.","","",draft
-food-002,food,core,say,"Bas, pet bhar gaya","बस, पेट भर गया","Enough, I'm full","You'll need this a lot. Aunties may not accept the first one.","","",draft
-food-003,food,core,hear,"Aur lijiye!","और लीजिए!","Have some more!","","An aunty holds out the serving spoon","food-002;food-004;food-010",draft
-food-004,food,core,say,"Thoda aur","थोड़ा और","A little more","","","",draft
-food-005,food,core,say,"Paani dijiye","पानी दीजिए","Water, please","","","",draft
-food-006,food,core,say,"Bahut teekha hai","बहुत तीखा है","It's very spicy","","","",draft
-food-007,food,core,hear,"Khaana kha liya?","खाना खा लिया?","Have you eaten?","A very common way to show care.","Nani on the phone","food-008",draft
-food-008,food,core,say,"Haan, kha liya","हाँ, खा लिया","Yes, I've eaten","","","",draft
-food-009,food,core,hear,"Chai piyoge?","चाय पियोगे?","Will you have some tea?","Familiar tum form, how elders talk to younger people.","An uncle heading to the kitchen","food-010",draft
-food-010,food,core,say,"Haan, thodi si","हाँ, थोड़ी सी","Yes, just a little","","","",draft
-food-011,food,core,hear,"Khao, khao!","खाओ, खाओ!","Eat, eat!","","Your plate is nearly empty","food-002;food-004",draft
-food-012,food,core,say,"Bahut accha bana hai","बहुत अच्छा बना है","It's turned out really well","Warm praise for home cooking.","","",draft
-talk-001,talk,core,hear,"Kaisa laga?","कैसा लगा?","How did you like it?","","After a meal or an outing","talk-002",draft
-talk-002,talk,core,say,"Bahut accha laga","बहुत अच्छा लगा","I liked it a lot","","","",draft
-talk-003,talk,core,both,"Safar kaisa tha?","सफ़र कैसा था?","How was the journey?","","You've just arrived","talk-004",draft
-talk-004,talk,core,say,"Safar accha tha","सफ़र अच्छा था","The journey was good","","","",draft
-talk-005,talk,core,both,"Kaam kaisa chal raha hai?","काम कैसा चल रहा है?","How's work going?","","","talk-006",draft
-talk-006,talk,core,say,"Sab theek chal raha hai","सब ठीक चल रहा है","Everything's going fine","","","",draft
-talk-007,talk,core,hear,"Baitho, beta","बैठो, बेटा","Sit down, dear","Beta (child) is used fondly for anyone younger, including you.","","",draft
-talk-008,talk,later,say,"Aap kahaan se hain?","आप कहाँ से हैं?","Where are you from?","","","",draft
-warm-001,warm,core,say,"Aapse milkar khushi hui","आपसे मिलकर ख़ुशी हुई","Happy to meet you","","","",draft
-warm-002,warm,core,say,"Aapka ghar bahut sundar hai","आपका घर बहुत सुंदर है","Your home is lovely","","","",draft
-warm-003,warm,core,say,"Aap bahut acchi lag rahi hain","आप बहुत अच्छी लग रही हैं","You look very well (to a woman)","","","",draft
-warm-004,warm,core,say,"Aap bahut acche lag rahe hain","आप बहुत अच्छे लग रहे हैं","You look very well (to a man)","","","",draft
-occ-001,occ,later,say,"Janamdin mubaarak ho","जन्मदिन मुबारक हो","Happy birthday","Many families just say 'happy birthday'.","","",draft
-occ-002,occ,later,say,"Diwali ki shubhkaamnaayein","दिवाली की शुभकामनाएँ","Happy Diwali","Formal. 'Happy Diwali' is common too.","","",draft
-occ-003,occ,later,say,"Holi mubaarak ho","होली मुबारक हो","Happy Holi","","","",draft
-occ-004,occ,core,hear,"Jeete raho","जीते रहो","Bless you (live long)","What elders say when you greet them respectfully.","","",draft
-occ-005,occ,core,hear,"Khush raho","ख़ुश रहो","Be happy (a blessing)","","","",draft
+id,pack,priority,direction,roman,deva,english,notes,context,replies,status,roman_f,deva_f,english_f,notes_f
+greet-001,greet,core,say,Namaste,नमस्ते,Hello,Safe with everyone. Some families greet elders with Pranaam.,,,draft,,,,
+greet-002,greet,core,say,Aap kaise hain?,आप कैसे हैं?,How are you? (to a man),"To a woman, say kaisi.",,,draft,,,,
+greet-003,greet,core,say,Aap kaisi hain?,आप कैसी हैं?,How are you? (to a woman),"To a man, say kaise.",,,draft,,,,
+greet-004,greet,core,say,Main theek hoon,मैं ठीक हूँ,I'm fine,Add 'aap?' to ask back.,,,draft,,,,
+greet-005,greet,core,say,Haan,हाँ,Yes,,,,draft,,,,
+greet-006,greet,core,say,Nahin,नहीं,No,,,,draft,,,,
+greet-007,greet,core,say,Dhanyavaad,धन्यवाद,Thank you,Formal. Many families say shukriya or just 'thank you'.,,,draft,,,,
+greet-008,greet,core,say,Maaf kijiye,माफ़ कीजिए,Sorry / excuse me,,,,draft,,,,
+greet-009,greet,core,say,Phir milenge,फिर मिलेंगे,See you again,,,,draft,,,,
+greet-010,greet,core,say,"Accha, chalte hain","अच्छा, चलते हैं","Right, we'll be off",What people say when leaving someone's home.,,,draft,,,,
+greet-011,greet,core,hear,Kya haal hai?,क्या हाल है?,How are things?,,Someone greeting you at the door,greet-004,draft,,,,
+greet-012,greet,later,say,Mera naam {name} hai,मेरा नाम {name} है,My name is {name},Useful with extended family at weddings.,,,draft,,,,
+surv-001,surv,core,say,Mujhe thodi Hindi aati hai,मुझे थोड़ी हिंदी आती है,I know a little Hindi,People slow down when they hear this.,,,draft,,,,
+surv-002,surv,core,say,Thoda dheere boliye,थोड़ा धीरे बोलिए,Please speak a bit slower,"Polite -iye ending, for elders.",,,draft,,,,
+surv-003,surv,core,say,Mujhe samajh nahin aaya,मुझे समझ नहीं आया,I didn't understand,,,,draft,,,,
+surv-004,surv,core,say,Phir se boliye,फिर से बोलिए,Please say that again,,,,draft,,,,
+surv-005,surv,core,say,Iska matlab kya hai?,इसका मतलब क्या है?,What does this mean?,,,,draft,,,,
+surv-006,surv,later,say,Hindi mein ise kya kehte hain?,हिंदी में इसे क्या कहते हैं?,What's this called in Hindi?,,,,draft,,,,
+surv-007,surv,core,hear,Samajh gaye?,समझ गए?,Did you understand?,,Someone checking after explaining something,surv-008;surv-003,draft,Samajh gayi?,समझ गई?,,
+surv-008,surv,core,say,"Haan, samajh gaya","हाँ, समझ गया","Yes, I understood",Gaya because you're a man. A woman would say gayi.,,,draft,"Haan, samajh gayi","हाँ, समझ गई",,Gayi because you're a woman. A man would say gaya.
+family-001,family,core,say,Nani,नानी,Grandmother (mother's mother),Add -ji for respect: Nani-ji.,,,draft,,,,
+family-002,family,core,say,Nana,नाना,Grandfather (mother's father),,,,draft,,,,
+family-003,family,core,say,Dadi,दादी,Grandmother (father's mother),,,,draft,,,,
+family-004,family,core,say,Dada,दादा,Grandfather (father's father),,,,draft,,,,
+family-005,family,core,say,Mama,मामा,Uncle (mother's brother),,,,draft,,,,
+family-006,family,core,say,Mausi,मौसी,Aunt (mother's sister),,,,draft,,,,
+family-007,family,core,say,Chacha,चाचा,Uncle (father's younger brother),,,,draft,,,,
+family-008,family,core,say,Bua,बुआ,Aunt (father's sister),,,,draft,,,,
+family-009,family,core,say,Mummy ji,मम्मी जी,What you call your mother-in-law,"Families vary. Some say Mummy/Papa, others Maa/Pitaji.",,,draft,,,,
+family-010,family,core,say,Papa ji,पापा जी,What you call your father-in-law,"Families vary. Some say Mummy/Papa, others Maa/Pitaji.",,,draft,,,,
+family-011,family,core,say,Ye meri patni hain,ये मेरी पत्नी हैं,This is my wife,Hain (not hai) shows respect.,,,draft,Ye mere pati hain,ये मेरे पति हैं,This is my husband,
+family-012,family,core,say,Aapka naam kya hai?,आपका नाम क्या है?,What's your name?,,,,draft,,,,
+food-001,food,core,say,Khaana bahut swaadisht hai,खाना बहुत स्वादिष्ट है,The food is very tasty,A little formal. See also 'Bahut accha bana hai'.,,,draft,,,,
+food-002,food,core,say,"Bas, pet bhar gaya","बस, पेट भर गया","Enough, I'm full",You'll need this a lot. Aunties may not accept the first one.,,,draft,,,,
+food-003,food,core,hear,Aur lijiye!,और लीजिए!,Have some more!,,An aunty holds out the serving spoon,food-002;food-004;food-010,draft,,,,
+food-004,food,core,say,Thoda aur,थोड़ा और,A little more,,,,draft,,,,
+food-005,food,core,say,Paani dijiye,पानी दीजिए,"Water, please",,,,draft,,,,
+food-006,food,core,say,Bahut teekha hai,बहुत तीखा है,It's very spicy,,,,draft,,,,
+food-007,food,core,hear,Khaana kha liya?,खाना खा लिया?,Have you eaten?,A very common way to show care.,Nani on the phone,food-008,draft,,,,
+food-008,food,core,say,"Haan, kha liya","हाँ, खा लिया","Yes, I've eaten",,,,draft,,,,
+food-009,food,core,hear,Chai piyoge?,चाय पियोगे?,Will you have some tea?,"Familiar tum form, how elders talk to younger people.",An uncle heading to the kitchen,food-010,draft,Chai piyogi?,चाय पियोगी?,,
+food-010,food,core,say,"Haan, thodi si","हाँ, थोड़ी सी","Yes, just a little",,,,draft,,,,
+food-011,food,core,hear,"Khao, khao!","खाओ, खाओ!","Eat, eat!",,Your plate is nearly empty,food-002;food-004,draft,,,,
+food-012,food,core,say,Bahut accha bana hai,बहुत अच्छा बना है,It's turned out really well,Warm praise for home cooking.,,,draft,,,,
+talk-001,talk,core,hear,Kaisa laga?,कैसा लगा?,How did you like it?,,After a meal or an outing,talk-002,draft,,,,
+talk-002,talk,core,say,Bahut accha laga,बहुत अच्छा लगा,I liked it a lot,,,,draft,,,,
+talk-003,talk,core,both,Safar kaisa tha?,सफ़र कैसा था?,How was the journey?,,You've just arrived,talk-004,draft,,,,
+talk-004,talk,core,say,Safar accha tha,सफ़र अच्छा था,The journey was good,,,,draft,,,,
+talk-005,talk,core,both,Kaam kaisa chal raha hai?,काम कैसा चल रहा है?,How's work going?,,,talk-006,draft,,,,
+talk-006,talk,core,say,Sab theek chal raha hai,सब ठीक चल रहा है,Everything's going fine,,,,draft,,,,
+talk-007,talk,core,hear,"Baitho, beta","बैठो, बेटा","Sit down, dear","Beta (child) is used fondly for anyone younger, including you.",,,draft,"Baitho, beti","बैठो, बेटी",,Beti (daughter) is used fondly for younger women. Some families say beta to girls too.
+talk-008,talk,later,say,Aap kahaan se hain?,आप कहाँ से हैं?,Where are you from?,,,,draft,,,,
+warm-001,warm,core,say,Aapse milkar khushi hui,आपसे मिलकर ख़ुशी हुई,Happy to meet you,,,,draft,,,,
+warm-002,warm,core,say,Aapka ghar bahut sundar hai,आपका घर बहुत सुंदर है,Your home is lovely,,,,draft,,,,
+warm-003,warm,core,say,Aap bahut acchi lag rahi hain,आप बहुत अच्छी लग रही हैं,You look very well (to a woman),,,,draft,,,,
+warm-004,warm,core,say,Aap bahut acche lag rahe hain,आप बहुत अच्छे लग रहे हैं,You look very well (to a man),,,,draft,,,,
+occ-001,occ,later,say,Janamdin mubaarak ho,जन्मदिन मुबारक हो,Happy birthday,Many families just say 'happy birthday'.,,,draft,,,,
+occ-002,occ,later,say,Diwali ki shubhkaamnaayein,दिवाली की शुभकामनाएँ,Happy Diwali,Formal. 'Happy Diwali' is common too.,,,draft,,,,
+occ-003,occ,later,say,Holi mubaarak ho,होली मुबारक हो,Happy Holi,,,,draft,,,,
+occ-004,occ,core,hear,Jeete raho,जीते रहो,Bless you (live long),What elders say when you greet them respectfully.,,,draft,Jeeti raho,जीती रहो,,
+occ-005,occ,core,hear,Khush raho,ख़ुश रहो,Be happy (a blessing),,,,draft,,,,

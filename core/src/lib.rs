@@ -9,7 +9,7 @@ pub mod rng;
 pub mod session;
 
 pub use cards::{Answer, Card, CardKind, Choice};
-pub use content::{Content, Direction, Phrase};
+pub use content::{Content, Direction, Gender, Learner, Phrase};
 pub use date::Date;
 pub use progress::{Outcome, Progress};
 pub use session::{Feedback, Session};
@@ -32,6 +32,8 @@ pub(crate) fn test_content() -> Content {
         replies: replies.iter().map(|s| s.to_string()).collect(),
         status: Status::Draft,
         audio: false,
+        female: None,
+        female_form: false,
     };
     use Direction::*;
     Content {

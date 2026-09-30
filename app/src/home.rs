@@ -82,7 +82,7 @@ pub fn Home() -> Element {
             div { class: "hello",
                 div {
                     div { class: "date", "{today.long_label()}" }
-                    h2 { "Namaste, Euan" }
+                    h2 { "Namaste, {settings.name}" }
                 }
                 div { class: "xpb", "{xp} XP" }
             }

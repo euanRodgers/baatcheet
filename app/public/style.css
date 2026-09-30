@@ -38,6 +38,8 @@ p { margin: 0; }
 .app { height: 100%; max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; position: relative; background: var(--surface); }
 @media (min-width: 560px) { .app { border-left: 1px solid var(--line); border-right: 1px solid var(--line); } }
 .scr { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: calc(var(--safe-top) + 16px) 18px 24px; display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+/* Scroll instead of squashing: without this, boxes with overflow: hidden shrink and clip their rows. */
+.scr > * { flex-shrink: 0; }
 
 /* tab bar */
 .tabbar { flex: none; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); padding: 6px 8px calc(var(--safe-bottom) + 8px); background: var(--surface); }
@@ -187,3 +189,19 @@ p { margin: 0; }
 .error { padding: 32px 20px; display: grid; gap: 12px; }
 
 @media (prefers-reduced-motion: reduce) { .sheet, .toast { animation: none; } .sw::after, .prog b { transition: none; } }
+
+/* welcome */
+.welcome { gap: 20px; padding-top: calc(var(--safe-top) + 40px); }
+.welcome h1 { font-size: 2.6rem; color: var(--indigo); }
+.welcome .lede { font-size: 1.15rem; }
+.field { display: grid; gap: 8px; }
+.field > span { font-weight: 600; }
+.field input { font: inherit; font-size: 1.1rem; padding: 13px 14px; border: 1.5px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); min-height: 50px; }
+.field input:focus { outline: none; border-color: var(--indigo); }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.choice { border: 1.5px solid var(--line); background: var(--surface); border-radius: 16px; padding: 14px 10px; display: grid; gap: 2px; justify-items: center; min-height: 64px; }
+.choice small { color: var(--muted); font-size: .82rem; font-style: italic; }
+.choice.on { border-color: var(--indigo); background: var(--indigo-soft); color: var(--indigo); }
+.muted.small { font-size: .8rem; text-align: center; }
+.set-row.stack { flex-direction: column; align-items: stretch; }
+.name-input { font: inherit; width: 45%; min-height: 44px; padding: 8px 12px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); text-align: right; }

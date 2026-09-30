@@ -253,20 +253,20 @@
       "priority": "later",
       "direction": "say",
       "context": "",
-      "roman": "Mera naam Euan hai",
-      "deva": "मेरा नाम यूअन है",
-      "english": "My name is Euan",
+      "roman": "Mera naam {name} hai",
+      "deva": "मेरा नाम {name} है",
+      "english": "My name is {name}",
       "notes": "Useful with extended family at weddings.",
       "tiles": [
         "Mera",
         "naam",
-        "Euan",
+        "{name}",
         "hai"
       ],
       "devaTiles": [
         "मेरा",
         "नाम",
-        "यूअन",
+        "{name}",
         "है"
       ],
       "replies": [],
@@ -454,7 +454,22 @@
         "surv-003"
       ],
       "status": "draft",
-      "audio": false
+      "audio": false,
+      "female": {
+        "roman": "Samajh gayi?",
+        "deva": "समझ गई?",
+        "english": "Did you understand?",
+        "notes": "",
+        "tiles": [
+          "Samajh",
+          "gayi?"
+        ],
+        "devaTiles": [
+          "समझ",
+          "गई?"
+        ],
+        "audio": false
+      }
     },
     {
       "id": "surv-008",
@@ -478,7 +493,24 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": false,
+      "female": {
+        "roman": "Haan, samajh gayi",
+        "deva": "हाँ, समझ गई",
+        "english": "Yes, I understood",
+        "notes": "Gayi because you're a woman. A man would say gaya.",
+        "tiles": [
+          "Haan,",
+          "samajh",
+          "gayi"
+        ],
+        "devaTiles": [
+          "हाँ,",
+          "समझ",
+          "गई"
+        ],
+        "audio": false
+      }
     },
     {
       "id": "family-001",
@@ -708,7 +740,26 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": false,
+      "female": {
+        "roman": "Ye mere pati hain",
+        "deva": "ये मेरे पति हैं",
+        "english": "This is my husband",
+        "notes": "",
+        "tiles": [
+          "Ye",
+          "mere",
+          "pati",
+          "hain"
+        ],
+        "devaTiles": [
+          "ये",
+          "मेरे",
+          "पति",
+          "हैं"
+        ],
+        "audio": false
+      }
     },
     {
       "id": "family-012",
@@ -954,7 +1005,22 @@
         "food-010"
       ],
       "status": "draft",
-      "audio": false
+      "audio": false,
+      "female": {
+        "roman": "Chai piyogi?",
+        "deva": "चाय पियोगी?",
+        "english": "Will you have some tea?",
+        "notes": "",
+        "tiles": [
+          "Chai",
+          "piyogi?"
+        ],
+        "devaTiles": [
+          "चाय",
+          "पियोगी?"
+        ],
+        "audio": false
+      }
     },
     {
       "id": "food-010",
@@ -1207,7 +1273,22 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": false,
+      "female": {
+        "roman": "Baitho, beti",
+        "deva": "बैठो, बेटी",
+        "english": "Sit down, dear",
+        "notes": "Beti (daughter) is used fondly for younger women. Some families say beta to girls too.",
+        "tiles": [
+          "Baitho,",
+          "beti"
+        ],
+        "devaTiles": [
+          "बैठो,",
+          "बेटी"
+        ],
+        "audio": false
+      }
     },
     {
       "id": "talk-008",
@@ -1441,7 +1522,22 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": false,
+      "female": {
+        "roman": "Jeeti raho",
+        "deva": "जीती रहो",
+        "english": "Bless you (live long)",
+        "notes": "",
+        "tiles": [
+          "Jeeti",
+          "raho"
+        ],
+        "devaTiles": [
+          "जीती",
+          "रहो"
+        ],
+        "audio": false
+      }
     },
     {
       "id": "occ-005",

@@ -1,6 +1,7 @@
 //! Settings and backups.
 
 use crate::platform::{self, BackupResult};
+use crate::onboarding::GenderChoice;
 use crate::ui::TabBar;
 use crate::Ctx;
 use baatcheet_core::content::Status;
@@ -29,6 +30,14 @@ pub fn SettingsScreen() -> Element {
     // A backup file that's been read and checked, waiting for "Replace".
     let mut pending_restore: Signal<Option<Progress>> = use_signal(|| None);
     let mut previous = use_signal(platform::previous_progress);
+    // Changing forms takes effect straight away: the phrases re-adapt.
+    let gender = use_signal(|| ctx.settings.peek().gender);
+    use_effect(move || {
+        let g = gender();
+        if ctx.settings.peek().gender != g {
+            ctx.update_settings(|s| s.gender = g);
+        }
+    });
     let settings = ctx.settings.read().clone();
     let today = platform::today();
     let backup_label = match settings.last_backup {
@@ -70,9 +79,29 @@ pub fn SettingsScreen() -> Element {
                         onclick: move |_| ctx.update_settings(|s| s.slow = !s.slow),
                     }
                 }
+            }
+
+            div { class: "sec-l", "You" }
+            div { class: "set",
                 div { class: "set-row",
-                    div { "Speaking as" small { "Sets forms like samajh gaya" } }
-                    b { "Man" }
+                    label { r#for: "settings-name", "Name" small { "Used in greetings and \"Mera naam … hai\"" } }
+                    input {
+                        class: "name-input",
+                        id: "settings-name",
+                        r#type: "text",
+                        autocomplete: "given-name",
+                        initial_value: "{settings.name}",
+                        onchange: move |e| {
+                            let v = e.value().trim().to_string();
+                            if !v.is_empty() {
+                                ctx.update_settings(|s| s.name = v);
+                            }
+                        },
+                    }
+                }
+                div { class: "set-row stack",
+                    div { "Forms to learn" small { "Changes phrases like samajh gaya / gayi. Progress carries over." } }
+                    GenderChoice { gender }
                 }
             }
 

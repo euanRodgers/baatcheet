@@ -320,6 +320,7 @@ pub fn Summary() -> Element {
     let s = stats(&content, &ctx.progress.read());
     let session = &l.session;
     let first_try_total = session.first_attempts;
+    let name = ctx.settings.read().name.clone();
     let bonus = session.bonus;
     let back: Vec<(String, String)> = session
         .moved
@@ -333,7 +334,7 @@ pub fn Summary() -> Element {
         div { class: "scr",
             div { class: "sum",
                 div { class: "sec-l", "Session done" }
-                h2 { "Shabaash, Euan!" }
+                h2 { "Shabaash, {name}!" }
                 div { class: "rows",
                     div { class: "row", span { "XP earned" } b { "+{xp}" } }
                     if first_try_total > 0 {

@@ -1,7 +1,7 @@
 //! Everything that touches the browser: time, storage, audio, speech, files.
 
 use baatcheet_core::content::word_clip_name;
-use baatcheet_core::{Content, Date, Progress};
+use baatcheet_core::{Content, Date, Gender, Learner, Progress};
 use serde::{Deserialize, Serialize};
 use std::cell::RefCell;
 use wasm_bindgen::JsCast;
@@ -126,11 +126,25 @@ pub struct Settings {
     pub show_deva: bool,
     pub slow: bool,
     pub last_backup: Option<Date>,
+    /// Set on the welcome screen.
+    pub name: String,
+    pub gender: Option<Gender>,
 }
 
 impl Default for Settings {
     fn default() -> Self {
-        Settings { show_deva: true, slow: false, last_backup: None }
+        Settings { show_deva: true, slow: false, last_backup: None, name: String::new(), gender: None }
+    }
+}
+
+impl Settings {
+    /// The learner, once the welcome screen has been filled in.
+    pub fn learner(&self) -> Option<Learner> {
+        let name = self.name.trim();
+        match (name.is_empty(), self.gender) {
+            (false, Some(gender)) => Some(Learner { name: name.to_string(), gender }),
+            _ => None,
+        }
     }
 }
 
@@ -246,7 +260,7 @@ fn with_player(f: impl FnOnce(&HtmlAudioElement)) {
 pub fn play_phrase(content: &Content, id: &str, slow: bool) {
     let Some(p) = content.phrase(id) else { return };
     if p.audio {
-        play_clip(&format!("audio/{}.mp3", p.id), &p.deva, slow);
+        play_clip(&format!("audio/{}.mp3", p.clip_name()), &p.deva, slow);
     } else {
         speak(&p.deva, slow);
     }

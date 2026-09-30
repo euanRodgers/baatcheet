@@ -13,7 +13,7 @@
 //!
 //! Run build-content afterwards so the app knows the clips exist.
 
-use baatcheet_core::content::{Content, normalize_word, word_clip_name};
+use baatcheet_core::content::{Content, NAME, normalize_word, word_clip_name};
 use baatcheet_tools::{flag_value, has_flag, path_arg, workspace_root};
 use std::collections::BTreeMap;
 use std::path::PathBuf;
@@ -55,22 +55,33 @@ fn main() -> ExitCode {
     };
 
     let mut jobs: Vec<Job> = Vec::new();
-    for p in &content.phrases {
-        let path = audio_dir.join(format!("{}.mp3", p.id));
-        let wanted = match &only {
+    // Phrases with the learner's name can't be pre-recorded; the app speaks them.
+    for p in content.phrases.iter().filter(|p| !p.is_personal()) {
+        let wanted = |stem: &str| match &only {
             Some(ids) => ids.contains(&p.id),
-            None => !path.exists(),
+            None => !audio_dir.join(format!("{stem}.mp3")).exists(),
         };
-        if wanted {
+        if wanted(&p.id) {
+            let path = audio_dir.join(format!("{}.mp3", p.id));
             jobs.push(Job { label: format!("{} {}", p.id, p.roman), text: p.deva.clone(), path });
+        }
+        if let Some(f) = &p.female {
+            let stem = format!("{}-f", p.id);
+            if wanted(&stem) {
+                let path = audio_dir.join(format!("{stem}.mp3"));
+                jobs.push(Job { label: format!("{stem} {}", f.roman), text: f.deva.clone(), path });
+            }
         }
     }
     if words && only.is_none() {
         // One clip per distinct Devanagari word, shared by every phrase that uses it.
         let mut distinct: BTreeMap<String, String> = BTreeMap::new();
         for p in &content.phrases {
-            for (r, d) in p.tiles.iter().zip(&p.deva_tiles) {
-                distinct.entry(normalize_word(d)).or_insert_with(|| normalize_word(r));
+            let female = p.female.iter().flat_map(|f| f.tiles.iter().zip(&f.deva_tiles));
+            for (r, d) in p.tiles.iter().zip(&p.deva_tiles).chain(female) {
+                if !d.contains(NAME) {
+                    distinct.entry(normalize_word(d)).or_insert_with(|| normalize_word(r));
+                }
             }
         }
         for (deva, roman) in distinct {
