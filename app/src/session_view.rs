@@ -1,7 +1,8 @@
 //! A practice session: one card at a time, then the summary.
 
 use crate::platform;
-use crate::ui::{CloseIcon, Hindi, PlayButtons, interval_label, tile_text};
+use crate::ui::{CloseIcon, Hindi, PlayButtons, WordBreakdown, interval_label, tile_text};
+use baatcheet_core::answer::{Mark, check_typed};
 use crate::{Ctx, Screen};
 use baatcheet_core::content::pack_name;
 use baatcheet_core::progress::{INTERVALS, stats};
@@ -60,6 +61,8 @@ fn CardBody(card: Card) -> Element {
     let picked = l.picked;
     let built = l.built.clone();
     let revealed = l.revealed;
+    let typed = l.typed.clone();
+    let checked = l.checked.clone();
     let quiet_hints = card.retry || l.session.bonus;
     let show_deva = ctx.settings.read().show_deva;
     let id = p.id.clone();
@@ -80,6 +83,7 @@ fn CardBody(card: Card) -> Element {
             PlayButtons { phrase_id: id.clone() }
             Hindi { roman: p.roman.clone(), deva: p.deva.clone(), big: true }
             div { class: "eng", "{p.english}" }
+            WordBreakdown { phrase_id: id.clone() }
             if !p.notes.is_empty() {
                 div { class: "note", "{p.notes}" }
             }
@@ -209,36 +213,116 @@ fn CardBody(card: Card) -> Element {
             }
         }
 
-        CardKind::Recall => rsx! {
-            div { class: "kind", "Recall" }
-            h3 { class: "q", "How would you say…" }
-            div { class: "eng big", "{p.english}" }
-            if revealed {
-                Hindi { roman: p.roman.clone(), deva: p.deva.clone(), big: true }
-                PlayButtons { phrase_id: id.clone() }
-                div { class: "spacer" }
-                div { class: "sec-l", "How did it go?" }
-                div { class: "grade",
-                    // On a retry or in a bonus round nothing moves, so the hints would be wrong.
-                    button { class: "g1", onclick: move |_| grade_recall(ctx, Outcome::Right), "Got it" if !quiet_hints { small { "moves up" } } }
-                    button { class: "g2", onclick: move |_| grade_recall(ctx, Outcome::Nearly), "Nearly" if !quiet_hints { small { "stays put" } } }
-                    button { class: "g3", onclick: move |_| grade_recall(ctx, Outcome::Wrong), "Missed" if !quiet_hints { small { "see it again" } } }
+        CardKind::Recall => {
+            let tiles = p.tiles.clone();
+            let deva_tiles = p.deva_tiles.clone();
+            let pid = p.id.clone();
+            let check_answer = move || {
+                let typed = ctx.live.read().as_ref().map(|l| l.typed.clone()).unwrap_or_default();
+                let checked = check_typed(&typed, &tiles, &deva_tiles);
+                if checked.all_right() {
+                    // Spelled differently perhaps, but right: no need to self-grade.
+                    grade(ctx, Outcome::Right);
+                } else {
+                    if let Some(l) = ctx.live.write().as_mut() {
+                        l.checked = Some(checked);
+                        l.revealed = true;
+                    }
+                    ctx.play_phrase(&pid);
                 }
-            } else {
-                p { class: "muted", "Say it out loud, or in your head." }
-                div { class: "spacer" }
-                button {
-                    class: "btn",
-                    onclick: move |_| {
-                        if let Some(l) = ctx.live.write().as_mut() {
-                            l.revealed = true;
+            };
+            rsx! {
+                div { class: "kind", "Recall" }
+                h3 { class: "q", "How would you say…" }
+                div { class: "eng big", "{p.english}" }
+                if revealed {
+                    if let Some(c) = checked {
+                        div { class: "typed",
+                            div { class: "sec-l", "Your answer, word by word" }
+                            div { class: "marks",
+                                for (k, w) in c.words.iter().enumerate() {
+                                    span {
+                                        key: "{k}",
+                                        class: match w.mark {
+                                            Mark::Right => "mk ok",
+                                            Mark::Close => "mk close",
+                                            Mark::Missing => "mk miss",
+                                            Mark::Extra => "mk extra",
+                                        },
+                                        title: match w.mark {
+                                            Mark::Right => "right",
+                                            Mark::Close => "nearly",
+                                            Mark::Missing => "missing",
+                                            Mark::Extra => "not in the answer",
+                                        },
+                                        "{w.text}"
+                                    }
+                                }
+                            }
+                            p { class: "muted small-left", "Green is right, amber is nearly, red is missing. Spelling variations are fine." }
                         }
-                        ctx.play_phrase(&id);
-                    },
-                    "Show answer"
+                    }
+                    Hindi { roman: p.roman.clone(), deva: p.deva.clone(), big: true }
+                    PlayButtons { phrase_id: id.clone() }
+                    WordBreakdown { phrase_id: id.clone(), compact: true }
+                    div { class: "spacer" }
+                    div { class: "sec-l", "How did it go?" }
+                    div { class: "grade",
+                        // On a retry or in a bonus round nothing moves, so the hints would be wrong.
+                        button { class: "g1", onclick: move |_| grade_recall(ctx, Outcome::Right), "Got it" if !quiet_hints { small { "moves up" } } }
+                        button { class: "g2", onclick: move |_| grade_recall(ctx, Outcome::Nearly), "Nearly" if !quiet_hints { small { "stays put" } } }
+                        button { class: "g3", onclick: move |_| grade_recall(ctx, Outcome::Wrong), "Missed" if !quiet_hints { small { "see it again" } } }
+                    }
+                } else if !answered {
+                    p { class: "muted", "Type it in Hindi, or say it out loud and show the answer." }
+                    input {
+                        id: "recall-input",
+                        class: "answer-input",
+                        r#type: "text",
+                        placeholder: "Type your answer",
+                        autocomplete: "off",
+                        autocapitalize: "none",
+                        spellcheck: "false",
+                        "autocorrect": "off",
+                        "enterkeyhint": "done",
+                        value: "{typed}",
+                        oninput: move |e| {
+                            if let Some(l) = ctx.live.write().as_mut() {
+                                l.typed = e.value();
+                            }
+                        },
+                        onkeydown: {
+                            let mut check_answer = check_answer.clone();
+                            move |e: KeyboardEvent| {
+                                if e.key() == Key::Enter {
+                                    check_answer();
+                                }
+                            }
+                        },
+                    }
+                    div { class: "spacer" }
+                    button {
+                        class: "btn",
+                        disabled: typed.trim().is_empty(),
+                        onclick: {
+                            let mut check_answer = check_answer.clone();
+                            move |_| check_answer()
+                        },
+                        "Check"
+                    }
+                    button {
+                        class: "btn ghost",
+                        onclick: move |_| {
+                            if let Some(l) = ctx.live.write().as_mut() {
+                                l.revealed = true;
+                            }
+                            ctx.play_phrase(&id);
+                        },
+                        "Show answer"
+                    }
                 }
             }
-        },
+        }
     }
 }
 
@@ -301,6 +385,7 @@ fn AnswerSheet(card: Card) -> Element {
                     div { class: "m", "{target.english}" }
                 }
             }
+            WordBreakdown { phrase_id: target_id.clone(), compact: true }
             if !fb.right && !notes.is_empty() {
                 div { class: "m", "{notes}" }
             }

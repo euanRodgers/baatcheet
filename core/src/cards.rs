@@ -212,6 +212,23 @@ pub fn make_card(content: &Content, phrase: &Phrase, kind: CardKind, rng: &mut R
     card
 }
 
+/// The options for the learner's turn in a scene: the line to say, and three
+/// things they might say instead, from other packs so none of them is also right.
+pub fn scene_turn(content: &Content, line: &Phrase, rng: &mut Rng) -> Card {
+    let mut card = Card::plain(&line.id, CardKind::Respond);
+    let others = pick_distractors(
+        content,
+        line,
+        rng,
+        // Whole phrases only: a lone word like "Dadi" is too obviously wrong.
+        |c| c.direction.is_said() && !c.is_personal() && c.tiles.len() >= 2,
+        |c| usize::from(c.pack != line.pack) * 5,
+    );
+    fill_options(&mut card, line, others, rng);
+    card.reply_id = Some(line.id.clone());
+    card
+}
+
 fn choice_of(p: &Phrase) -> Choice {
     Choice { roman: p.roman.clone(), deva: p.deva.clone(), english: p.english.clone() }
 }

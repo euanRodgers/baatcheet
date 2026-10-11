@@ -118,6 +118,19 @@ impl Progress {
         self.days.iter().filter(|d| { let (dy, dm, _) = d.ymd(); dy == y && dm == m }).count()
     }
 
+    /// Reviews due on each of the next `days` days, starting today. Today's
+    /// count includes anything overdue.
+    pub fn forecast(&self, today: Date, days: usize) -> Vec<usize> {
+        let mut out = vec![0; days];
+        for p in self.phrases.values() {
+            let offset = p.due.days_since(today).max(0) as usize;
+            if offset < days {
+                out[offset] += 1;
+            }
+        }
+        out
+    }
+
     /// Phrases first met today.
     pub fn met_on(&self, today: Date) -> usize {
         self.phrases.values().filter(|p| p.met == Some(today)).count()
@@ -255,6 +268,16 @@ mod tests {
         let mut p = PhraseProgress { box_: 4, ..PhraseProgress::met(day("2026-09-30")) };
         p.apply(Outcome::Nearly, day("2026-09-30"), false);
         assert_eq!((p.box_, p.due), (4, day("2026-10-14")));
+    }
+
+    #[test]
+    fn forecast_counts_overdue_as_today() {
+        let mut prog = Progress::default();
+        let today = day("2026-10-11");
+        for (id, due) in [("a", "2026-10-01"), ("b", "2026-10-11"), ("c", "2026-10-13"), ("d", "2026-11-30")] {
+            prog.phrases.insert(id.into(), PhraseProgress { due: day(due), ..PhraseProgress::met(today) });
+        }
+        assert_eq!(prog.forecast(today, 4), vec![2, 0, 1, 0]);
     }
 
     #[test]

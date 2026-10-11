@@ -62,6 +62,9 @@ impl Engine {
     }
 }
 
+/// Makes one clip, or says why it couldn't.
+type Generator = Box<dyn Fn(&Job) -> Result<(), String>>;
+
 struct Job {
     label: String,
     text: String,
@@ -145,7 +148,7 @@ fn main() -> ExitCode {
         return ExitCode::SUCCESS;
     }
 
-    let generate: Box<dyn Fn(&Job) -> Result<(), String>> = match engine {
+    let generate: Generator = match engine {
         Engine::Say => {
             let voice = flag_value(&args, "--voice").unwrap_or_else(|| "Lekha".into());
             Box::new(move |j: &Job| say(&voice, &j.text, &j.path))

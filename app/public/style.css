@@ -205,3 +205,76 @@ p { margin: 0; }
 .muted.small { font-size: .8rem; text-align: center; }
 .set-row.stack { flex-direction: column; align-items: stretch; }
 .name-input { font: inherit; width: 45%; min-height: 44px; padding: 8px 12px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); text-align: right; }
+
+/* word by word */
+.words { display: flex; flex-wrap: wrap; gap: 6px; }
+.word { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 6px 10px; display: grid; justify-items: start; gap: 0; min-height: 44px; text-align: left; line-height: 1.25; }
+.word .wr { font-weight: 600; }
+.word .wd { font-family: var(--f-deva); font-size: .85rem; color: var(--muted); }
+.word .wm { font-size: .78rem; color: var(--muted); }
+.word.on { border-color: var(--indigo); background: var(--indigo-soft); }
+.word.on .wm { color: var(--indigo); }
+.words.compact .word { padding: 4px 8px; min-height: 40px; background: transparent; }
+.words.compact .word .wr { font-size: .9rem; }
+.words.compact .word .wm { font-size: .72rem; }
+.word-note { font-size: .85rem; color: var(--marigold-ink); background: var(--marigold-soft); border-radius: 10px; padding: 8px 10px; }
+.tabbar { grid-template-columns: repeat(4, 1fr); }
+
+/* scenes */
+.scene-list { display: grid; gap: 10px; }
+.scene-card { text-align: left; border: 1px solid var(--line); background: var(--surface); border-radius: 18px; padding: 16px; display: grid; gap: 4px; }
+.scene-card .st { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; }
+.scene-card .si { color: var(--muted); font-size: .92rem; }
+.scene-card .sm { display: flex; justify-content: space-between; gap: 10px; font-size: .78rem; color: var(--indigo); margin-top: 4px; }
+.scene-title { flex: 1; font-family: var(--f-display); font-weight: 700; font-size: 1.1rem; }
+.mini.on { border-color: var(--indigo); color: var(--indigo); background: var(--indigo-soft); }
+.chat { gap: 10px; padding-bottom: 32px; }
+.bubble { align-self: flex-start; max-width: 85%; text-align: left; border: 0; background: var(--sunk); border-radius: 18px 18px 18px 6px; padding: 10px 14px; display: grid; gap: 1px; }
+.bubble.you { align-self: flex-end; background: var(--indigo); color: var(--on-indigo); border-radius: 18px 18px 6px 18px; }
+.bubble .who { font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+.bubble .br { font-weight: 600; font-size: 1.05rem; }
+.bubble .bd { font-family: var(--f-deva); font-size: .92rem; opacity: .8; }
+.bubble .be { font-size: .85rem; opacity: .8; font-style: italic; }
+.nudge { align-self: flex-end; max-width: 85%; font-size: .82rem; color: var(--again); text-align: right; }
+.your-turn { display: grid; gap: 10px; margin-top: 6px; }
+.scene-foot { flex: none; padding: 10px 18px calc(var(--safe-bottom) + 14px); border-top: 1px solid var(--line); background: var(--surface); }
+
+/* typed answers */
+.answer-input { font: inherit; font-size: 1.15rem; padding: 14px; border: 1.5px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); min-height: 52px; width: 100%; }
+.answer-input:focus { outline: none; border-color: var(--indigo); }
+.typed { display: grid; gap: 6px; background: var(--sunk); border-radius: 14px; padding: 12px; }
+.marks { display: flex; flex-wrap: wrap; gap: 6px 8px; font-size: 1.1rem; font-weight: 600; }
+.mk.ok { color: var(--good); }
+.mk.close { color: var(--marigold-ink); text-decoration: underline wavy; text-underline-offset: 4px; }
+.mk.miss { color: var(--again); text-decoration: underline dashed; text-underline-offset: 4px; }
+.mk.extra { color: var(--muted); text-decoration: line-through; font-weight: 400; }
+.small-left { font-size: .78rem; }
+
+/* phrasebook */
+.search { font: inherit; font-size: 1rem; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); min-height: 48px; -webkit-appearance: none; appearance: none; }
+.search:focus { outline: none; border-color: var(--indigo); }
+.filters { display: flex; gap: 8px; }
+.chip-btn { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 14px; font-size: .85rem; font-weight: 600; color: var(--muted); min-height: 40px; }
+.chip-btn.on { border-color: var(--indigo); color: var(--indigo); background: var(--indigo-soft); }
+.pbr-main { border: 0; background: none; text-align: left; padding: 0; min-width: 0; }
+.chev { color: var(--muted); font-size: 1.4rem; }
+.overlay { position: absolute; inset: 0; background: rgba(10, 12, 30, .45); z-index: 10; display: flex; align-items: flex-end; animation: fade .15s ease-out; }
+.detail { background: var(--surface); width: 100%; max-height: 92%; overflow-y: auto; border-radius: 24px 24px 0 0; padding: 16px 18px calc(var(--safe-bottom) + 20px); display: flex; flex-direction: column; gap: 14px; animation: up .22s ease-out; }
+.detail > * { flex-shrink: 0; }
+.detail-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.replies { display: grid; gap: 8px; }
+.reply { text-align: left; border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 10px 14px; display: grid; gap: 2px; min-height: 44px; }
+.reply span { font-size: .85rem; color: var(--muted); }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .overlay, .detail { animation: none; } }
+
+/* home extras */
+.forecast { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; align-items: end; height: 96px; }
+.fday { display: grid; grid-template-rows: 16px 1fr 16px; height: 100%; justify-items: center; gap: 2px; }
+.fcount { font-size: .72rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.fbar { width: 100%; max-width: 28px; background: var(--sunk); border-radius: 6px; display: flex; align-items: flex-end; overflow: hidden; }
+.fbar b { display: block; width: 100%; background: var(--indigo); border-radius: 6px; }
+.flabel { font-size: .7rem; color: var(--muted); }
+.scene-cta { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; border: 1px solid var(--marigold); background: var(--marigold-soft); color: var(--ink); border-radius: 18px; padding: 14px 16px; }
+.scene-cta .st { font-family: var(--f-display); font-weight: 700; font-size: 1.1rem; }
+.scene-cta .si { font-size: .88rem; color: var(--marigold-ink); }

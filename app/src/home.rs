@@ -75,6 +75,18 @@ pub fn Home() -> Element {
         .filter(|(_, _, _, total)| *total > 0)
         .collect();
     let badge_list = badges(&content, &progress);
+    // Next week's reviews as (count, bar height %, day label).
+    let counts = progress.forecast(today, 7);
+    let most = counts.iter().copied().max().unwrap_or(0).max(1);
+    let forecast: Vec<(usize, usize, String)> = counts
+        .iter()
+        .enumerate()
+        .map(|(i, &n)| {
+            let height = if n == 0 { 0 } else { (n * 100 / most).max(8) };
+            let label = if i == 0 { "Today".to_string() } else { today.add_days(i as i32).weekday_name()[..3].to_string() };
+            (n, height, label)
+        })
+        .collect();
     let xp = progress.xp;
 
     rsx! {
@@ -139,6 +151,25 @@ pub fn Home() -> Element {
                         }
                     }
                 }
+            }
+            if has_progress {
+                div { class: "sec-l", "Coming up" }
+                div { class: "forecast", "aria-label": "Reviews due over the next week",
+                    for (i, (n, height, label)) in forecast.iter().enumerate() {
+                        div { key: "{i}", class: "fday",
+                            div { class: "fcount", if *n > 0 { "{n}" } }
+                            div { class: "fbar", b { style: "height: {height}%" } }
+                            div { class: "flabel", "{label}" }
+                        }
+                    }
+                }
+            }
+            button { class: "scene-cta", onclick: move |_| ctx.go(Screen::Scenes),
+                div {
+                    div { class: "st", "Try a scene" }
+                    div { class: "si", "Practise a whole conversation: arriving, dinner, saying goodbye." }
+                }
+                span { class: "chev", "aria-hidden": "true", "›" }
             }
             div { class: "sec-l", "Packs" }
             div { class: "packs",

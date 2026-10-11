@@ -14,7 +14,7 @@ pub fn Welcome() -> Element {
     rsx! {
         div { class: "scr welcome",
             h1 { "Namaste!" }
-            p { class: "lede", "Everyday Hindi, ten minutes a day. First, two quick questions." }
+            p { class: "lede", "Everyday Hindi, ten minutes a day. Listen, pick, build and say real phrases. A mistake just brings a phrase back sooner." }
             label { class: "field", r#for: "learner-name",
                 span { "What's your name?" }
                 input {

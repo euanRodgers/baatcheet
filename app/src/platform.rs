@@ -42,6 +42,13 @@ pub async fn sleep(ms: i32) {
     let _ = JsFuture::from(promise).await;
 }
 
+/// Scroll an element to its bottom, e.g. to show the newest chat line.
+pub fn scroll_to_bottom(id: &str) {
+    if let Some(el) = window().document().and_then(|d| d.get_element_by_id(id)) {
+        el.set_scroll_top(el.scroll_height());
+    }
+}
+
 // ---------- content ----------
 
 pub async fn load_content() -> Result<Content, String> {

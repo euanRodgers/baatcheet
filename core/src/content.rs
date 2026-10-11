@@ -68,6 +68,31 @@ pub struct Phrase {
     pub female_form: bool,
 }
 
+/// A short conversation from `content/scenes.csv`, practised turn by turn.
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct Scene {
+    pub id: String,
+    pub title: String,
+    /// Sets the scene: "An aunty opens the door."
+    pub intro: String,
+    pub lines: Vec<Line>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct Line {
+    /// Who speaks: a role like "Aunty", or "you" for the learner's turn.
+    pub speaker: String,
+    pub phrase: String,
+}
+
+impl Line {
+    pub fn is_yours(&self) -> bool {
+        self.speaker.eq_ignore_ascii_case("you")
+    }
+}
+
 /// One word, as glossed in `content/words.csv`.
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all = "camelCase")]
@@ -141,6 +166,8 @@ pub struct Content {
     /// The glossary: every word used in the phrases.
     #[serde(default)]
     pub words: Vec<Word>,
+    #[serde(default)]
+    pub scenes: Vec<Scene>,
 }
 
 impl Content {
@@ -292,7 +319,7 @@ mod tests {
             audio: "tts/surv-008-f.m4a".into(),
         });
         let naam = phrase("greet-012", "Mera naam {name} hai", "मेरा नाम {name} है");
-        let content = Content { version: 1, phrases: vec![gaya, naam], words: vec![] };
+        let content = Content { version: 1, phrases: vec![gaya, naam], ..Default::default() };
 
         let man = content.for_learner(&Learner { name: "Euan".into(), gender: Gender::Man });
         assert_eq!(man.phrases[0].roman, "Haan, samajh gaya");

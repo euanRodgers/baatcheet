@@ -3567,5 +3567,190 @@
       "note": "For elders.",
       "audio": "tts/w/7db503c5e92112f8.m4a"
     }
+  ],
+  "scenes": [
+    {
+      "id": "arrive",
+      "title": "Arriving",
+      "intro": "You've just arrived and an aunty opens the door.",
+      "lines": [
+        {
+          "speaker": "Aunty",
+          "phrase": "greet-001"
+        },
+        {
+          "speaker": "you",
+          "phrase": "greet-001"
+        },
+        {
+          "speaker": "Aunty",
+          "phrase": "greet-011"
+        },
+        {
+          "speaker": "you",
+          "phrase": "greet-004"
+        },
+        {
+          "speaker": "Uncle",
+          "phrase": "talk-003"
+        },
+        {
+          "speaker": "you",
+          "phrase": "talk-004"
+        },
+        {
+          "speaker": "Aunty",
+          "phrase": "talk-007"
+        },
+        {
+          "speaker": "Uncle",
+          "phrase": "food-009"
+        },
+        {
+          "speaker": "you",
+          "phrase": "food-010"
+        }
+      ]
+    },
+    {
+      "id": "dinner",
+      "title": "Dinner",
+      "intro": "Everyone is gathering to eat.",
+      "lines": [
+        {
+          "speaker": "Aunty",
+          "phrase": "food-018"
+        },
+        {
+          "speaker": "you",
+          "phrase": "food-019"
+        },
+        {
+          "speaker": "Uncle",
+          "phrase": "talk-001"
+        },
+        {
+          "speaker": "you",
+          "phrase": "food-012"
+        },
+        {
+          "speaker": "Aunty",
+          "phrase": "food-003"
+        },
+        {
+          "speaker": "you",
+          "phrase": "food-004"
+        },
+        {
+          "speaker": "Nani",
+          "phrase": "food-011"
+        },
+        {
+          "speaker": "you",
+          "phrase": "food-002"
+        },
+        {
+          "speaker": "you",
+          "phrase": "warm-007"
+        }
+      ]
+    },
+    {
+      "id": "lost",
+      "title": "When you're lost",
+      "intro": "An uncle asks you something you don't quite catch.",
+      "lines": [
+        {
+          "speaker": "Uncle",
+          "phrase": "talk-005"
+        },
+        {
+          "speaker": "you",
+          "phrase": "surv-003"
+        },
+        {
+          "speaker": "you",
+          "phrase": "surv-002"
+        },
+        {
+          "speaker": "Uncle",
+          "phrase": "talk-005"
+        },
+        {
+          "speaker": "you",
+          "phrase": "talk-006"
+        },
+        {
+          "speaker": "Uncle",
+          "phrase": "surv-012"
+        }
+      ]
+    },
+    {
+      "id": "catchup",
+      "title": "Catching up",
+      "intro": "A cousin you haven't seen for a while.",
+      "lines": [
+        {
+          "speaker": "Cousin",
+          "phrase": "greet-013"
+        },
+        {
+          "speaker": "you",
+          "phrase": "greet-014"
+        },
+        {
+          "speaker": "Cousin",
+          "phrase": "family-020"
+        },
+        {
+          "speaker": "you",
+          "phrase": "family-021"
+        },
+        {
+          "speaker": "Cousin",
+          "phrase": "talk-015"
+        },
+        {
+          "speaker": "you",
+          "phrase": "surv-011"
+        },
+        {
+          "speaker": "Cousin",
+          "phrase": "surv-012"
+        }
+      ]
+    },
+    {
+      "id": "leaving",
+      "title": "Saying goodbye",
+      "intro": "It's late, and time to head home.",
+      "lines": [
+        {
+          "speaker": "you",
+          "phrase": "talk-012"
+        },
+        {
+          "speaker": "you",
+          "phrase": "greet-010"
+        },
+        {
+          "speaker": "Aunty",
+          "phrase": "warm-009"
+        },
+        {
+          "speaker": "you",
+          "phrase": "warm-010"
+        },
+        {
+          "speaker": "Nani",
+          "phrase": "occ-004"
+        },
+        {
+          "speaker": "you",
+          "phrase": "greet-009"
+        }
+      ]
+    }
   ]
 }

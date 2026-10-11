@@ -1,15 +1,17 @@
 //! Everything Baatcheet decides, with no web code: content and progress types,
 //! the Leitner scheduler, card generation and the session builder.
 
+pub mod answer;
 pub mod cards;
 pub mod content;
 pub mod date;
 pub mod progress;
 pub mod rng;
+pub mod scene;
 pub mod session;
 
 pub use cards::{Answer, Card, CardKind, Choice};
-pub use content::{Content, Direction, Gender, Learner, Phrase, Word};
+pub use content::{Content, Direction, Gender, Learner, Line, Phrase, Scene, Word};
 pub use date::Date;
 pub use progress::{Outcome, Progress};
 pub use session::{Feedback, Session};
@@ -39,6 +41,7 @@ pub(crate) fn test_content() -> Content {
     Content {
         version: 1,
         words: vec![],
+        scenes: vec![],
         phrases: vec![
             p("greet-001", Say, "Namaste", "नमस्ते", "Hello", &[]),
             p("greet-002", Say, "Aap kaise hain?", "आप कैसे हैं?", "How are you? (to a man)", &[]),

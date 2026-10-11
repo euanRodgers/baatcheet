@@ -7,7 +7,8 @@
 //!   --strict         treat missing audio as an error, not a warning
 
 use baatcheet_core::content::{
-    Content, Direction, Form, NAME, PACKS, Phrase, Priority, Status, Word, normalize_word, roman_words, word_clip_name,
+    Content, Direction, Form, Line, NAME, PACKS, Phrase, Priority, Scene, Status, Word, normalize_word, roman_words,
+    word_clip_name,
 };
 use baatcheet_tools::{audio_files, find_clip, has_flag, path_arg};
 use serde::Deserialize;
@@ -57,6 +58,18 @@ struct WordRow {
     note: String,
 }
 
+/// One row of `content/scenes.csv`. A scene's title and intro go on its first row.
+#[derive(Deserialize)]
+struct SceneRow {
+    scene: String,
+    #[serde(default)]
+    title: String,
+    #[serde(default)]
+    intro: String,
+    speaker: String,
+    phrase: String,
+}
+
 fn split_tiles(explicit: &str, text: &str) -> Vec<String> {
     if explicit.trim().is_empty() {
         text.split_whitespace().map(String::from).collect()
@@ -69,6 +82,7 @@ fn main() -> ExitCode {
     let args: Vec<String> = std::env::args().collect();
     let csv_path = path_arg(&args, "--csv", "content/phrases.csv");
     let words_path = path_arg(&args, "--words", "content/words.csv");
+    let scenes_path = path_arg(&args, "--scenes", "content/scenes.csv");
     let out_path = path_arg(&args, "--out", "app/public/phrases.json");
     let audio_dir = path_arg(&args, "--audio", "app/public/audio");
     let approved_only = has_flag(&args, "--approved-only");
@@ -221,7 +235,7 @@ fn main() -> ExitCode {
         }
     }
 
-    // 6. The glossary: every word used has a meaning, spelled the same way.
+    // 7. The glossary: every word used has a meaning, spelled the same way.
     let mut words: Vec<Word> = Vec::new();
     match csv::Reader::from_path(&words_path) {
         Err(e) => warnings.push(format!("no glossary ({}): {e}", words_path.display())),
@@ -273,7 +287,41 @@ fn main() -> ExitCode {
         warnings.push(format!("glossary words no phrase uses: {}", unused.join(", ")));
     }
 
-    // 7. Audio: approved phrases have a clip (a woman's form has its own,
+    // 8. Scenes: every line is a real phrase, and the learner only says things
+    // they could say.
+    let mut scenes: Vec<Scene> = Vec::new();
+    if let Ok(mut reader) = csv::Reader::from_path(&scenes_path) {
+        for (i, row) in reader.deserialize::<SceneRow>().enumerate() {
+            let row = match row {
+                Ok(r) => r,
+                Err(e) => {
+                    errors.push(format!("{} line {}: {e}", scenes_path.display(), i + 2));
+                    continue;
+                }
+            };
+            let id = row.scene.trim().to_string();
+            if scenes.last().is_none_or(|s| s.id != id) {
+                if scenes.iter().any(|s| s.id == id) {
+                    errors.push(format!("scene {id}: its rows must be together"));
+                }
+                if row.title.trim().is_empty() {
+                    errors.push(format!("scene {id}: the first row needs a title"));
+                }
+                scenes.push(Scene { id: id.clone(), title: row.title.trim().into(), intro: row.intro.trim().into(), lines: vec![] });
+            }
+            let line = Line { speaker: row.speaker.trim().into(), phrase: row.phrase.trim().into() };
+            match phrases.iter().find(|p| p.id == line.phrase) {
+                None => errors.push(format!("scene {id}: phrase {} doesn't exist", line.phrase)),
+                Some(p) if line.is_yours() && !p.direction.is_said() => {
+                    errors.push(format!("scene {id}: {} is hear-only, so it can't be the learner's line", p.id))
+                }
+                _ => {}
+            }
+            scenes.last_mut().unwrap().lines.push(line);
+        }
+    }
+
+    // 6. Audio: approved phrases have a clip (a woman's form has its own,
     // `{id}-f`), and no clip is orphaned. Phrases with the learner's name
     // can't be recorded, so they always use the device voice.
     let files = audio_files(&audio_dir);
@@ -325,7 +373,7 @@ fn main() -> ExitCode {
         return ExitCode::FAILURE;
     }
 
-    let content = Content { version: 1, phrases, words };
+    let content = Content { version: 1, phrases, words, scenes };
     let json = serde_json::to_string_pretty(&content).expect("content serialises");
     if let Err(e) = std::fs::write(&out_path, json + "\n") {
         eprintln!("Can't write {}: {e}", out_path.display());
@@ -337,9 +385,10 @@ fn main() -> ExitCode {
     let with_audio = content.phrases.iter().filter(|p| !p.audio.is_empty()).count();
     let word_clips = content.words.iter().filter(|w| !w.audio.is_empty()).count();
     println!(
-        "Wrote {} phrases ({say} to say, {hear} to hear, {with_audio} with audio) and {} words ({word_clips} with audio) to {}",
+        "Wrote {} phrases ({say} to say, {hear} to hear, {with_audio} with audio), {} words ({word_clips} with audio) and {} scenes to {}",
         content.phrases.len(),
         content.words.len(),
+        content.scenes.len(),
         out_path.display()
     );
     for pack in &PACKS {

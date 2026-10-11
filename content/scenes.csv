@@ -1,0 +1,38 @@
+scene,title,intro,speaker,phrase
+arrive,Arriving,You've just arrived and an aunty opens the door.,Aunty,greet-001
+arrive,,,you,greet-001
+arrive,,,Aunty,greet-011
+arrive,,,you,greet-004
+arrive,,,Uncle,talk-003
+arrive,,,you,talk-004
+arrive,,,Aunty,talk-007
+arrive,,,Uncle,food-009
+arrive,,,you,food-010
+dinner,Dinner,Everyone is gathering to eat.,Aunty,food-018
+dinner,,,you,food-019
+dinner,,,Uncle,talk-001
+dinner,,,you,food-012
+dinner,,,Aunty,food-003
+dinner,,,you,food-004
+dinner,,,Nani,food-011
+dinner,,,you,food-002
+dinner,,,you,warm-007
+lost,When you're lost,An uncle asks you something you don't quite catch.,Uncle,talk-005
+lost,,,you,surv-003
+lost,,,you,surv-002
+lost,,,Uncle,talk-005
+lost,,,you,talk-006
+lost,,,Uncle,surv-012
+catchup,Catching up,A cousin you haven't seen for a while.,Cousin,greet-013
+catchup,,,you,greet-014
+catchup,,,Cousin,family-020
+catchup,,,you,family-021
+catchup,,,Cousin,talk-015
+catchup,,,you,surv-011
+catchup,,,Cousin,surv-012
+leaving,Saying goodbye,"It's late, and time to head home.",you,talk-012
+leaving,,,you,greet-010
+leaving,,,Aunty,warm-009
+leaving,,,you,warm-010
+leaving,,,Nani,occ-004
+leaving,,,you,greet-009

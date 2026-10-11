@@ -4,10 +4,13 @@ mod book;
 mod home;
 mod onboarding;
 mod platform;
+mod scenes;
 mod session_view;
 mod settings;
 mod ui;
 
+use baatcheet_core::answer::Checked;
+use baatcheet_core::scene::ScenePlay;
 use baatcheet_core::{CardKind, Content, Feedback, Progress, Session};
 use dioxus::prelude::*;
 use platform::Settings;
@@ -25,6 +28,8 @@ pub enum Screen {
     Settings,
     Session,
     Summary,
+    Scenes,
+    Scene,
 }
 
 /// A session in progress, plus what's on screen for the current card.
@@ -37,6 +42,9 @@ pub struct Live {
     pub built: Vec<usize>,
     /// Recall card answer shown.
     pub revealed: bool,
+    /// What the learner typed on a Recall card, and how it compared.
+    pub typed: String,
+    pub checked: Option<Checked>,
     /// Furthest the progress bar has reached, in percent. A requeued card
     /// lengthens the session, but the bar never goes backwards.
     pub bar: usize,
@@ -44,7 +52,16 @@ pub struct Live {
 
 impl Live {
     fn new(session: Session) -> Live {
-        Live { session, feedback: None, picked: None, built: vec![], revealed: false, bar: 0 }
+        Live {
+            session,
+            feedback: None,
+            picked: None,
+            built: vec![],
+            revealed: false,
+            typed: String::new(),
+            checked: None,
+            bar: 0,
+        }
     }
 
     fn reset_card(&mut self) {
@@ -54,6 +71,8 @@ impl Live {
         self.picked = None;
         self.built.clear();
         self.revealed = false;
+        self.typed.clear();
+        self.checked = None;
     }
 }
 
@@ -66,6 +85,7 @@ pub struct Ctx {
     pub settings: Signal<Settings>,
     pub screen: Signal<Screen>,
     pub live: Signal<Option<Live>>,
+    pub scene: Signal<Option<ScenePlay>>,
     pub toast: Signal<Option<String>>,
 }
 
@@ -148,6 +168,48 @@ impl Ctx {
         }
     }
 
+    pub fn start_scene(mut self, id: &str) {
+        let play = {
+            let content = self.content.read();
+            let Some(scene) = content.scenes.iter().find(|s| s.id == id) else { return };
+            ScenePlay::start(&content, scene, platform::seed())
+        };
+        self.scene.set(Some(play));
+        self.go(Screen::Scene);
+        self.play_scene_line();
+    }
+
+    /// Other people's lines play as they appear. The learner's play once answered.
+    pub fn play_scene_line(self) {
+        let id = {
+            let scene = self.scene.read();
+            let Some(play) = scene.as_ref() else { return };
+            if play.waiting() {
+                return;
+            }
+            play.scene.lines[play.shown - 1].phrase.clone()
+        };
+        self.play_phrase(&id);
+    }
+
+    pub fn scene_next(mut self) {
+        let more = {
+            let content = self.content.read();
+            self.scene.write().as_mut().is_some_and(|p| p.next(&content))
+        };
+        if more {
+            self.play_scene_line();
+        }
+    }
+
+    pub fn scene_answer(mut self, choice: usize) {
+        if let Some(play) = self.scene.write().as_mut() {
+            play.answer(choice, &mut self.progress.write(), platform::today());
+        }
+        self.save();
+        self.play_scene_line();
+    }
+
     pub fn quit_session(mut self) {
         let answered = self.live.read().as_ref().map(|l| l.session.graded).unwrap_or(0);
         self.live.set(None);
@@ -193,6 +255,7 @@ fn App(content: Content) -> Element {
         settings,
         screen: use_signal(|| Screen::Home),
         live: use_signal(|| None),
+        scene: use_signal(|| None),
         toast: use_signal(|| None),
     };
     use_context_provider(|| ctx);
@@ -210,6 +273,8 @@ fn App(content: Content) -> Element {
                 Screen::Settings => rsx! { settings::SettingsScreen {} },
                 Screen::Session => rsx! { session_view::SessionScreen {} },
                 Screen::Summary => rsx! { session_view::Summary {} },
+                Screen::Scenes => rsx! { scenes::SceneList {} },
+                Screen::Scene => rsx! { scenes::ScenePlayer {} },
             }
             if let Some(msg) = toast {
                 div { class: "toast", role: "status", "{msg}" }
