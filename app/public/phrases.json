@@ -19,7 +19,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-001.m4a"
     },
     {
       "id": "greet-002",
@@ -43,7 +43,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-002.m4a"
     },
     {
       "id": "greet-003",
@@ -67,7 +67,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-003.m4a"
     },
     {
       "id": "greet-004",
@@ -91,7 +91,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-004.m4a"
     },
     {
       "id": "greet-005",
@@ -111,7 +111,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-005.m4a"
     },
     {
       "id": "greet-006",
@@ -131,7 +131,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-006.m4a"
     },
     {
       "id": "greet-007",
@@ -151,7 +151,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-007.m4a"
     },
     {
       "id": "greet-008",
@@ -173,7 +173,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-008.m4a"
     },
     {
       "id": "greet-009",
@@ -195,7 +195,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-009.m4a"
     },
     {
       "id": "greet-010",
@@ -219,7 +219,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-010.m4a"
     },
     {
       "id": "greet-011",
@@ -245,7 +245,7 @@
         "greet-004"
       ],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-011.m4a"
     },
     {
       "id": "greet-012",
@@ -270,8 +270,59 @@
         "है"
       ],
       "replies": [],
+      "status": "draft"
+    },
+    {
+      "id": "greet-013",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "both",
+      "context": "Someone checking in on you",
+      "roman": "Sab theek hai?",
+      "deva": "सब ठीक है?",
+      "english": "Is everything OK?",
+      "notes": "",
+      "tiles": [
+        "Sab",
+        "theek",
+        "hai?"
+      ],
+      "devaTiles": [
+        "सब",
+        "ठीक",
+        "है?"
+      ],
+      "replies": [
+        "greet-014"
+      ],
       "status": "draft",
-      "audio": false
+      "audio": "tts/greet-013.m4a"
+    },
+    {
+      "id": "greet-014",
+      "pack": "greet",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Haan, sab theek hai",
+      "deva": "हाँ, सब ठीक है",
+      "english": "Yes, all good",
+      "notes": "",
+      "tiles": [
+        "Haan,",
+        "sab",
+        "theek",
+        "hai"
+      ],
+      "devaTiles": [
+        "हाँ,",
+        "सब",
+        "ठीक",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/greet-014.m4a"
     },
     {
       "id": "surv-001",
@@ -299,7 +350,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/surv-001.m4a"
     },
     {
       "id": "surv-002",
@@ -323,7 +374,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/surv-002.m4a"
     },
     {
       "id": "surv-003",
@@ -349,7 +400,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/surv-003.m4a"
     },
     {
       "id": "surv-004",
@@ -373,7 +424,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/surv-004.m4a"
     },
     {
       "id": "surv-005",
@@ -399,7 +450,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/surv-005.m4a"
     },
     {
       "id": "surv-006",
@@ -429,7 +480,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/surv-006.m4a"
     },
     {
       "id": "surv-007",
@@ -454,7 +505,7 @@
         "surv-003"
       ],
       "status": "draft",
-      "audio": false,
+      "audio": "tts/surv-007.m4a",
       "female": {
         "roman": "Samajh gayi?",
         "deva": "समझ गई?",
@@ -468,7 +519,7 @@
           "समझ",
           "गई?"
         ],
-        "audio": false
+        "audio": "tts/surv-007-f.m4a"
       }
     },
     {
@@ -493,7 +544,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false,
+      "audio": "tts/surv-008.m4a",
       "female": {
         "roman": "Haan, samajh gayi",
         "deva": "हाँ, समझ गई",
@@ -509,8 +560,119 @@
           "समझ",
           "गई"
         ],
-        "audio": false
+        "audio": "tts/surv-008-f.m4a"
       }
+    },
+    {
+      "id": "surv-009",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Ek minute",
+      "deva": "एक मिनट",
+      "english": "One minute",
+      "notes": "",
+      "tiles": [
+        "Ek",
+        "minute"
+      ],
+      "devaTiles": [
+        "एक",
+        "मिनट"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/surv-009.m4a"
+    },
+    {
+      "id": "surv-010",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Mujhe nahin pata",
+      "deva": "मुझे नहीं पता",
+      "english": "I don't know",
+      "notes": "",
+      "tiles": [
+        "Mujhe",
+        "nahin",
+        "pata"
+      ],
+      "devaTiles": [
+        "मुझे",
+        "नहीं",
+        "पता"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/surv-010.m4a"
+    },
+    {
+      "id": "surv-011",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Main seekh raha hoon",
+      "deva": "मैं सीख रहा हूँ",
+      "english": "I'm learning",
+      "notes": "Raha because you're a man.",
+      "tiles": [
+        "Main",
+        "seekh",
+        "raha",
+        "hoon"
+      ],
+      "devaTiles": [
+        "मैं",
+        "सीख",
+        "रहा",
+        "हूँ"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/surv-011.m4a",
+      "female": {
+        "roman": "Main seekh rahi hoon",
+        "deva": "मैं सीख रही हूँ",
+        "english": "I'm learning",
+        "notes": "Rahi because you're a woman.",
+        "tiles": [
+          "Main",
+          "seekh",
+          "rahi",
+          "hoon"
+        ],
+        "devaTiles": [
+          "मैं",
+          "सीख",
+          "रही",
+          "हूँ"
+        ],
+        "audio": "tts/surv-011-f.m4a"
+      }
+    },
+    {
+      "id": "surv-012",
+      "pack": "surv",
+      "priority": "core",
+      "direction": "both",
+      "context": "",
+      "roman": "Accha!",
+      "deva": "अच्छा!",
+      "english": "Oh, I see! / OK",
+      "notes": "Said constantly to show you are following.",
+      "tiles": [
+        "Accha!"
+      ],
+      "devaTiles": [
+        "अच्छा!"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/surv-012.m4a"
     },
     {
       "id": "family-001",
@@ -530,7 +692,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-001.m4a"
     },
     {
       "id": "family-002",
@@ -550,7 +712,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-002.m4a"
     },
     {
       "id": "family-003",
@@ -570,7 +732,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-003.m4a"
     },
     {
       "id": "family-004",
@@ -590,7 +752,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-004.m4a"
     },
     {
       "id": "family-005",
@@ -610,7 +772,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-005.m4a"
     },
     {
       "id": "family-006",
@@ -630,7 +792,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-006.m4a"
     },
     {
       "id": "family-007",
@@ -650,7 +812,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-007.m4a"
     },
     {
       "id": "family-008",
@@ -670,7 +832,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-008.m4a"
     },
     {
       "id": "family-009",
@@ -692,7 +854,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-009.m4a"
     },
     {
       "id": "family-010",
@@ -714,7 +876,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-010.m4a"
     },
     {
       "id": "family-011",
@@ -740,7 +902,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false,
+      "audio": "tts/family-011.m4a",
       "female": {
         "roman": "Ye mere pati hain",
         "deva": "ये मेरे पति हैं",
@@ -758,7 +920,7 @@
           "पति",
           "हैं"
         ],
-        "audio": false
+        "audio": "tts/family-011-f.m4a"
       }
     },
     {
@@ -785,7 +947,209 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/family-012.m4a"
+    },
+    {
+      "id": "family-013",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bhai",
+      "deva": "भाई",
+      "english": "Brother",
+      "notes": "",
+      "tiles": [
+        "Bhai"
+      ],
+      "devaTiles": [
+        "भाई"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/family-013.m4a"
+    },
+    {
+      "id": "family-014",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Behen",
+      "deva": "बहन",
+      "english": "Sister",
+      "notes": "",
+      "tiles": [
+        "Behen"
+      ],
+      "devaTiles": [
+        "बहन"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/family-014.m4a"
+    },
+    {
+      "id": "family-015",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bhabhi",
+      "deva": "भाभी",
+      "english": "Brother's wife",
+      "notes": "Also a friendly way to address an older friend's wife.",
+      "tiles": [
+        "Bhabhi"
+      ],
+      "devaTiles": [
+        "भाभी"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/family-015.m4a"
+    },
+    {
+      "id": "family-016",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Jija ji",
+      "deva": "जीजा जी",
+      "english": "Sister's husband",
+      "notes": "",
+      "tiles": [
+        "Jija",
+        "ji"
+      ],
+      "devaTiles": [
+        "जीजा",
+        "जी"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/family-016.m4a"
+    },
+    {
+      "id": "family-017",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Beta",
+      "deva": "बेटा",
+      "english": "Son",
+      "notes": "Also used fondly for any younger person.",
+      "tiles": [
+        "Beta"
+      ],
+      "devaTiles": [
+        "बेटा"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/family-017.m4a"
+    },
+    {
+      "id": "family-018",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Beti",
+      "deva": "बेटी",
+      "english": "Daughter",
+      "notes": "",
+      "tiles": [
+        "Beti"
+      ],
+      "devaTiles": [
+        "बेटी"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/family-018.m4a"
+    },
+    {
+      "id": "family-019",
+      "pack": "family",
+      "priority": "core",
+      "direction": "both",
+      "context": "",
+      "roman": "Aapke kitne bachche hain?",
+      "deva": "आपके कितने बच्चे हैं?",
+      "english": "How many children do you have?",
+      "notes": "",
+      "tiles": [
+        "Aapke",
+        "kitne",
+        "bachche",
+        "hain?"
+      ],
+      "devaTiles": [
+        "आपके",
+        "कितने",
+        "बच्चे",
+        "हैं?"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/family-019.m4a"
+    },
+    {
+      "id": "family-020",
+      "pack": "family",
+      "priority": "core",
+      "direction": "both",
+      "context": "Catching up with a relative",
+      "roman": "Ghar mein sab kaise hain?",
+      "deva": "घर में सब कैसे हैं?",
+      "english": "How's everyone at home?",
+      "notes": "",
+      "tiles": [
+        "Ghar",
+        "mein",
+        "sab",
+        "kaise",
+        "hain?"
+      ],
+      "devaTiles": [
+        "घर",
+        "में",
+        "सब",
+        "कैसे",
+        "हैं?"
+      ],
+      "replies": [
+        "family-021"
+      ],
+      "status": "draft",
+      "audio": "tts/family-020.m4a"
+    },
+    {
+      "id": "family-021",
+      "pack": "family",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Sab theek hain",
+      "deva": "सब ठीक हैं",
+      "english": "Everyone's well",
+      "notes": "Hain (plural) because it is about everyone.",
+      "tiles": [
+        "Sab",
+        "theek",
+        "hain"
+      ],
+      "devaTiles": [
+        "सब",
+        "ठीक",
+        "हैं"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/family-021.m4a"
     },
     {
       "id": "food-001",
@@ -811,7 +1175,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-001.m4a"
     },
     {
       "id": "food-002",
@@ -837,7 +1201,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-002.m4a"
     },
     {
       "id": "food-003",
@@ -863,7 +1227,7 @@
         "food-010"
       ],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-003.m4a"
     },
     {
       "id": "food-004",
@@ -885,7 +1249,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-004.m4a"
     },
     {
       "id": "food-005",
@@ -907,7 +1271,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-005.m4a"
     },
     {
       "id": "food-006",
@@ -931,7 +1295,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-006.m4a"
     },
     {
       "id": "food-007",
@@ -957,7 +1321,7 @@
         "food-008"
       ],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-007.m4a"
     },
     {
       "id": "food-008",
@@ -981,7 +1345,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-008.m4a"
     },
     {
       "id": "food-009",
@@ -1005,7 +1369,7 @@
         "food-010"
       ],
       "status": "draft",
-      "audio": false,
+      "audio": "tts/food-009.m4a",
       "female": {
         "roman": "Chai piyogi?",
         "deva": "चाय पियोगी?",
@@ -1019,7 +1383,7 @@
           "चाय",
           "पियोगी?"
         ],
-        "audio": false
+        "audio": "tts/food-009-f.m4a"
       }
     },
     {
@@ -1044,7 +1408,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-010.m4a"
     },
     {
       "id": "food-011",
@@ -1069,7 +1433,7 @@
         "food-004"
       ],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-011.m4a"
     },
     {
       "id": "food-012",
@@ -1095,7 +1459,201 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/food-012.m4a"
+    },
+    {
+      "id": "food-013",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Ye kya hai?",
+      "deva": "ये क्या है?",
+      "english": "What's this?",
+      "notes": "",
+      "tiles": [
+        "Ye",
+        "kya",
+        "hai?"
+      ],
+      "devaTiles": [
+        "ये",
+        "क्या",
+        "है?"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/food-013.m4a"
+    },
+    {
+      "id": "food-014",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bahut mazedaar hai",
+      "deva": "बहुत मज़ेदार है",
+      "english": "It's really delicious",
+      "notes": "",
+      "tiles": [
+        "Bahut",
+        "mazedaar",
+        "hai"
+      ],
+      "devaTiles": [
+        "बहुत",
+        "मज़ेदार",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/food-014.m4a"
+    },
+    {
+      "id": "food-015",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Thoda kam teekha",
+      "deva": "थोड़ा कम तीखा",
+      "english": "A bit less spicy, please",
+      "notes": "",
+      "tiles": [
+        "Thoda",
+        "kam",
+        "teekha"
+      ],
+      "devaTiles": [
+        "थोड़ा",
+        "कम",
+        "तीखा"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/food-015.m4a"
+    },
+    {
+      "id": "food-016",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Chai bahut acchi hai",
+      "deva": "चाय बहुत अच्छी है",
+      "english": "The tea is lovely",
+      "notes": "Acchi, because chai is feminine.",
+      "tiles": [
+        "Chai",
+        "bahut",
+        "acchi",
+        "hai"
+      ],
+      "devaTiles": [
+        "चाय",
+        "बहुत",
+        "अच्छी",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/food-016.m4a"
+    },
+    {
+      "id": "food-017",
+      "pack": "food",
+      "priority": "core",
+      "direction": "hear",
+      "context": "A plate of hot rotis comes round",
+      "roman": "Aur roti lo",
+      "deva": "और रोटी लो",
+      "english": "Have another roti",
+      "notes": "Familiar form, from someone close or older.",
+      "tiles": [
+        "Aur",
+        "roti",
+        "lo"
+      ],
+      "devaTiles": [
+        "और",
+        "रोटी",
+        "लो"
+      ],
+      "replies": [
+        "food-002",
+        "food-004"
+      ],
+      "status": "draft",
+      "audio": "tts/food-017.m4a"
+    },
+    {
+      "id": "food-018",
+      "pack": "food",
+      "priority": "core",
+      "direction": "hear",
+      "context": "Someone calls from the dining room",
+      "roman": "Khaana lag gaya hai",
+      "deva": "खाना लग गया है",
+      "english": "Dinner's on the table",
+      "notes": "",
+      "tiles": [
+        "Khaana",
+        "lag",
+        "gaya",
+        "hai"
+      ],
+      "devaTiles": [
+        "खाना",
+        "लग",
+        "गया",
+        "है"
+      ],
+      "replies": [
+        "food-019"
+      ],
+      "status": "draft",
+      "audio": "tts/food-018.m4a"
+    },
+    {
+      "id": "food-019",
+      "pack": "food",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aa raha hoon",
+      "deva": "आ रहा हूँ",
+      "english": "Coming!",
+      "notes": "Raha because you're a man.",
+      "tiles": [
+        "Aa",
+        "raha",
+        "hoon"
+      ],
+      "devaTiles": [
+        "आ",
+        "रहा",
+        "हूँ"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/food-019.m4a",
+      "female": {
+        "roman": "Aa rahi hoon",
+        "deva": "आ रही हूँ",
+        "english": "Coming!",
+        "notes": "Rahi because you're a woman.",
+        "tiles": [
+          "Aa",
+          "rahi",
+          "hoon"
+        ],
+        "devaTiles": [
+          "आ",
+          "रही",
+          "हूँ"
+        ],
+        "audio": "tts/food-019-f.m4a"
+      }
     },
     {
       "id": "talk-001",
@@ -1119,7 +1677,7 @@
         "talk-002"
       ],
       "status": "draft",
-      "audio": false
+      "audio": "tts/talk-001.m4a"
     },
     {
       "id": "talk-002",
@@ -1143,7 +1701,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/talk-002.m4a"
     },
     {
       "id": "talk-003",
@@ -1169,7 +1727,7 @@
         "talk-004"
       ],
       "status": "draft",
-      "audio": false
+      "audio": "tts/talk-003.m4a"
     },
     {
       "id": "talk-004",
@@ -1193,7 +1751,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/talk-004.m4a"
     },
     {
       "id": "talk-005",
@@ -1223,7 +1781,7 @@
         "talk-006"
       ],
       "status": "draft",
-      "audio": false
+      "audio": "tts/talk-005.m4a"
     },
     {
       "id": "talk-006",
@@ -1251,7 +1809,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/talk-006.m4a"
     },
     {
       "id": "talk-007",
@@ -1273,7 +1831,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false,
+      "audio": "tts/talk-007.m4a",
       "female": {
         "roman": "Baitho, beti",
         "deva": "बैठो, बेटी",
@@ -1287,7 +1845,7 @@
           "बैठो,",
           "बेटी"
         ],
-        "audio": false
+        "audio": "tts/talk-007-f.m4a"
       }
     },
     {
@@ -1314,7 +1872,226 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/talk-008.m4a"
+    },
+    {
+      "id": "talk-009",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aaj mausam accha hai",
+      "deva": "आज मौसम अच्छा है",
+      "english": "The weather's nice today",
+      "notes": "",
+      "tiles": [
+        "Aaj",
+        "mausam",
+        "accha",
+        "hai"
+      ],
+      "devaTiles": [
+        "आज",
+        "मौसम",
+        "अच्छा",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/talk-009.m4a"
+    },
+    {
+      "id": "talk-010",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bahut garmi hai",
+      "deva": "बहुत गर्मी है",
+      "english": "It's very hot",
+      "notes": "",
+      "tiles": [
+        "Bahut",
+        "garmi",
+        "hai"
+      ],
+      "devaTiles": [
+        "बहुत",
+        "गर्मी",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/talk-010.m4a"
+    },
+    {
+      "id": "talk-011",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bahut thand hai",
+      "deva": "बहुत ठंड है",
+      "english": "It's very cold",
+      "notes": "",
+      "tiles": [
+        "Bahut",
+        "thand",
+        "hai"
+      ],
+      "devaTiles": [
+        "बहुत",
+        "ठंड",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/talk-011.m4a"
+    },
+    {
+      "id": "talk-012",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Main thak gaya hoon",
+      "deva": "मैं थक गया हूँ",
+      "english": "I'm tired",
+      "notes": "Gaya because you're a man.",
+      "tiles": [
+        "Main",
+        "thak",
+        "gaya",
+        "hoon"
+      ],
+      "devaTiles": [
+        "मैं",
+        "थक",
+        "गया",
+        "हूँ"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/talk-012.m4a",
+      "female": {
+        "roman": "Main thak gayi hoon",
+        "deva": "मैं थक गई हूँ",
+        "english": "I'm tired",
+        "notes": "Gayi because you're a woman.",
+        "tiles": [
+          "Main",
+          "thak",
+          "gayi",
+          "hoon"
+        ],
+        "devaTiles": [
+          "मैं",
+          "थक",
+          "गई",
+          "हूँ"
+        ],
+        "audio": "tts/talk-012-f.m4a"
+      }
+    },
+    {
+      "id": "talk-013",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Neend aa rahi hai",
+      "deva": "नींद आ रही है",
+      "english": "I'm sleepy",
+      "notes": "Literally \"sleep is coming\". Rahi agrees with neend, so it is the same for everyone.",
+      "tiles": [
+        "Neend",
+        "aa",
+        "rahi",
+        "hai"
+      ],
+      "devaTiles": [
+        "नींद",
+        "आ",
+        "रही",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/talk-013.m4a"
+    },
+    {
+      "id": "talk-014",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Kal milte hain",
+      "deva": "कल मिलते हैं",
+      "english": "See you tomorrow",
+      "notes": "",
+      "tiles": [
+        "Kal",
+        "milte",
+        "hain"
+      ],
+      "devaTiles": [
+        "कल",
+        "मिलते",
+        "हैं"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/talk-014.m4a"
+    },
+    {
+      "id": "talk-015",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "both",
+      "context": "Walking into a busy kitchen",
+      "roman": "Kya ho raha hai?",
+      "deva": "क्या हो रहा है?",
+      "english": "What's going on?",
+      "notes": "",
+      "tiles": [
+        "Kya",
+        "ho",
+        "raha",
+        "hai?"
+      ],
+      "devaTiles": [
+        "क्या",
+        "हो",
+        "रहा",
+        "है?"
+      ],
+      "replies": [
+        "talk-016"
+      ],
+      "status": "draft",
+      "audio": "tts/talk-015.m4a"
+    },
+    {
+      "id": "talk-016",
+      "pack": "talk",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Kuch nahin",
+      "deva": "कुछ नहीं",
+      "english": "Nothing much",
+      "notes": "",
+      "tiles": [
+        "Kuch",
+        "nahin"
+      ],
+      "devaTiles": [
+        "कुछ",
+        "नहीं"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/talk-016.m4a"
     },
     {
       "id": "warm-001",
@@ -1340,7 +2117,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/warm-001.m4a"
     },
     {
       "id": "warm-002",
@@ -1368,7 +2145,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/warm-002.m4a"
     },
     {
       "id": "warm-003",
@@ -1398,7 +2175,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/warm-003.m4a"
     },
     {
       "id": "warm-004",
@@ -1428,7 +2205,153 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/warm-004.m4a"
+    },
+    {
+      "id": "warm-005",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Bahut shukriya",
+      "deva": "बहुत शुक्रिया",
+      "english": "Thank you very much",
+      "notes": "",
+      "tiles": [
+        "Bahut",
+        "shukriya"
+      ],
+      "devaTiles": [
+        "बहुत",
+        "शुक्रिया"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/warm-005.m4a"
+    },
+    {
+      "id": "warm-006",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Koi baat nahin",
+      "deva": "कोई बात नहीं",
+      "english": "No problem / never mind",
+      "notes": "",
+      "tiles": [
+        "Koi",
+        "baat",
+        "nahin"
+      ],
+      "devaTiles": [
+        "कोई",
+        "बात",
+        "नहीं"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/warm-006.m4a"
+    },
+    {
+      "id": "warm-007",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Aapne bahut mehnat ki",
+      "deva": "आपने बहुत मेहनत की",
+      "english": "You've gone to so much trouble",
+      "notes": "A warm thing to say to whoever cooked or hosted.",
+      "tiles": [
+        "Aapne",
+        "bahut",
+        "mehnat",
+        "ki"
+      ],
+      "devaTiles": [
+        "आपने",
+        "बहुत",
+        "मेहनत",
+        "की"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/warm-007.m4a"
+    },
+    {
+      "id": "warm-008",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Mujhe yahaan bahut accha lagta hai",
+      "deva": "मुझे यहाँ बहुत अच्छा लगता है",
+      "english": "I really like it here",
+      "notes": "",
+      "tiles": [
+        "Mujhe",
+        "yahaan",
+        "bahut",
+        "accha",
+        "lagta",
+        "hai"
+      ],
+      "devaTiles": [
+        "मुझे",
+        "यहाँ",
+        "बहुत",
+        "अच्छा",
+        "लगता",
+        "है"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/warm-008.m4a"
+    },
+    {
+      "id": "warm-009",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "hear",
+      "context": "Saying goodbye at the door",
+      "roman": "Phir aana",
+      "deva": "फिर आना",
+      "english": "Come again",
+      "notes": "",
+      "tiles": [
+        "Phir",
+        "aana"
+      ],
+      "devaTiles": [
+        "फिर",
+        "आना"
+      ],
+      "replies": [
+        "warm-010"
+      ],
+      "status": "draft",
+      "audio": "tts/warm-009.m4a"
+    },
+    {
+      "id": "warm-010",
+      "pack": "warm",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Zaroor",
+      "deva": "ज़रूर",
+      "english": "Definitely / of course",
+      "notes": "",
+      "tiles": [
+        "Zaroor"
+      ],
+      "devaTiles": [
+        "ज़रूर"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/warm-010.m4a"
     },
     {
       "id": "occ-001",
@@ -1452,7 +2375,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/occ-001.m4a"
     },
     {
       "id": "occ-002",
@@ -1476,7 +2399,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/occ-002.m4a"
     },
     {
       "id": "occ-003",
@@ -1500,7 +2423,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/occ-003.m4a"
     },
     {
       "id": "occ-004",
@@ -1522,7 +2445,7 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false,
+      "audio": "tts/occ-004.m4a",
       "female": {
         "roman": "Jeeti raho",
         "deva": "जीती रहो",
@@ -1536,7 +2459,7 @@
           "जीती",
           "रहो"
         ],
-        "audio": false
+        "audio": "tts/occ-004-f.m4a"
       }
     },
     {
@@ -1559,8 +2482,1090 @@
       ],
       "replies": [],
       "status": "draft",
-      "audio": false
+      "audio": "tts/occ-005.m4a"
+    },
+    {
+      "id": "occ-006",
+      "pack": "occ",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Shaadi mubaarak ho",
+      "deva": "शादी मुबारक हो",
+      "english": "Congratulations on the wedding",
+      "notes": "",
+      "tiles": [
+        "Shaadi",
+        "mubaarak",
+        "ho"
+      ],
+      "devaTiles": [
+        "शादी",
+        "मुबारक",
+        "हो"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/occ-006.m4a"
+    },
+    {
+      "id": "occ-007",
+      "pack": "occ",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Badhaai ho!",
+      "deva": "बधाई हो!",
+      "english": "Congratulations!",
+      "notes": "",
+      "tiles": [
+        "Badhaai",
+        "ho!"
+      ],
+      "devaTiles": [
+        "बधाई",
+        "हो!"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/occ-007.m4a"
+    },
+    {
+      "id": "occ-008",
+      "pack": "occ",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Naya saal mubaarak ho",
+      "deva": "नया साल मुबारक हो",
+      "english": "Happy New Year",
+      "notes": "",
+      "tiles": [
+        "Naya",
+        "saal",
+        "mubaarak",
+        "ho"
+      ],
+      "devaTiles": [
+        "नया",
+        "साल",
+        "मुबारक",
+        "हो"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/occ-008.m4a"
+    },
+    {
+      "id": "occ-009",
+      "pack": "occ",
+      "priority": "core",
+      "direction": "hear",
+      "context": "",
+      "roman": "Bhagwaan aapka bhala kare",
+      "deva": "भगवान आपका भला करे",
+      "english": "God bless you",
+      "notes": "A blessing from an elder.",
+      "tiles": [
+        "Bhagwaan",
+        "aapka",
+        "bhala",
+        "kare"
+      ],
+      "devaTiles": [
+        "भगवान",
+        "आपका",
+        "भला",
+        "करे"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/occ-009.m4a"
+    },
+    {
+      "id": "occ-010",
+      "pack": "occ",
+      "priority": "core",
+      "direction": "say",
+      "context": "",
+      "roman": "Pranaam",
+      "deva": "प्रणाम",
+      "english": "Respectful greeting to an elder",
+      "notes": "Often said while touching an elder's feet.",
+      "tiles": [
+        "Pranaam"
+      ],
+      "devaTiles": [
+        "प्रणाम"
+      ],
+      "replies": [],
+      "status": "draft",
+      "audio": "tts/occ-010.m4a"
     }
   ],
-  "wordAudio": []
+  "words": [
+    {
+      "deva": "नमस्ते",
+      "roman": "namaste",
+      "meaning": "hello / goodbye",
+      "note": "Respectful, works with everyone.",
+      "audio": "tts/w/b6406fde598bc079.m4a"
+    },
+    {
+      "deva": "आप",
+      "roman": "aap",
+      "meaning": "you (respectful)",
+      "note": "Use with elders and anyone you don't know well.",
+      "audio": "tts/w/eec18ba1d0fe00d1.m4a"
+    },
+    {
+      "deva": "कैसे",
+      "roman": "kaise",
+      "meaning": "how",
+      "note": "Kaisi when it's about a woman, kaisa for one man or thing.",
+      "audio": "tts/w/8c58041a6994ece5.m4a"
+    },
+    {
+      "deva": "कैसी",
+      "roman": "kaisi",
+      "meaning": "how (about a woman)",
+      "audio": "tts/w/8c57fd1a6994e100.m4a"
+    },
+    {
+      "deva": "कैसा",
+      "roman": "kaisa",
+      "meaning": "how (about a man or thing)",
+      "audio": "tts/w/8c5c3d1a69993697.m4a"
+    },
+    {
+      "deva": "हैं",
+      "roman": "hain",
+      "meaning": "are",
+      "note": "Also used for one person, to show respect.",
+      "audio": "tts/w/15ad1b3a93c2b401.m4a"
+    },
+    {
+      "deva": "है",
+      "roman": "hai",
+      "meaning": "is",
+      "audio": "tts/w/e1766b1fd858cbbd.m4a"
+    },
+    {
+      "deva": "मैं",
+      "roman": "main",
+      "meaning": "I",
+      "audio": "tts/w/732988319baa2be4.m4a"
+    },
+    {
+      "deva": "ठीक",
+      "roman": "theek",
+      "meaning": "fine / OK",
+      "audio": "tts/w/6af2fd38eb1c9e8f.m4a"
+    },
+    {
+      "deva": "हूँ",
+      "roman": "hoon",
+      "meaning": "am",
+      "audio": "tts/w/d508dfe734f086fe.m4a"
+    },
+    {
+      "deva": "हाँ",
+      "roman": "haan",
+      "meaning": "yes",
+      "audio": "tts/w/49da073242dbaa61.m4a"
+    },
+    {
+      "deva": "नहीं",
+      "roman": "nahin",
+      "meaning": "no / not",
+      "audio": "tts/w/0ecdd263689c7287.m4a"
+    },
+    {
+      "deva": "धन्यवाद",
+      "roman": "dhanyavaad",
+      "meaning": "thank you",
+      "note": "Formal.",
+      "audio": "tts/w/b57c7a4c196e6a38.m4a"
+    },
+    {
+      "deva": "माफ़",
+      "roman": "maaf",
+      "meaning": "forgiven",
+      "note": "Maaf kijiye = please forgive (me).",
+      "audio": "tts/w/a0c440e602df6ff2.m4a"
+    },
+    {
+      "deva": "कीजिए",
+      "roman": "kijiye",
+      "meaning": "please do",
+      "note": "Polite form of karo (do).",
+      "audio": "tts/w/79bf6815d4383741.m4a"
+    },
+    {
+      "deva": "फिर",
+      "roman": "phir",
+      "meaning": "again / then",
+      "audio": "tts/w/a4b8117644466cc1.m4a"
+    },
+    {
+      "deva": "मिलेंगे",
+      "roman": "milenge",
+      "meaning": "(we) will meet",
+      "audio": "tts/w/46fdb0897871eb2d.m4a"
+    },
+    {
+      "deva": "अच्छा",
+      "roman": "accha",
+      "meaning": "good / OK / I see",
+      "note": "Acchi for feminine words, acche for plural or respect.",
+      "audio": "tts/w/9e03831161f7280d.m4a"
+    },
+    {
+      "deva": "अच्छी",
+      "roman": "acchi",
+      "meaning": "good (feminine)",
+      "audio": "tts/w/9dffdf1161f3db8a.m4a"
+    },
+    {
+      "deva": "अच्छे",
+      "roman": "acche",
+      "meaning": "good (plural or respectful)",
+      "audio": "tts/w/9dffda1161f3d30b.m4a"
+    },
+    {
+      "deva": "चलते",
+      "roman": "chalte",
+      "meaning": "go / move along",
+      "note": "Chalte hain = we'll be off.",
+      "audio": "tts/w/c05e9952ecfbbdad.m4a"
+    },
+    {
+      "deva": "क्या",
+      "roman": "kya",
+      "meaning": "what",
+      "note": "At the start of a sentence it can also just mark a question.",
+      "audio": "tts/w/b94332369554554b.m4a"
+    },
+    {
+      "deva": "हाल",
+      "roman": "haal",
+      "meaning": "state / condition",
+      "note": "Kya haal hai = how are things.",
+      "audio": "tts/w/49da143242dbc078.m4a"
+    },
+    {
+      "deva": "मेरा",
+      "roman": "mera",
+      "meaning": "my (with masculine words)",
+      "audio": "tts/w/d49f2ee00a31e2ad.m4a"
+    },
+    {
+      "deva": "मेरी",
+      "roman": "meri",
+      "meaning": "my (with feminine words)",
+      "audio": "tts/w/d49bcae00a2f02ea.m4a"
+    },
+    {
+      "deva": "मेरे",
+      "roman": "mere",
+      "meaning": "my (with plural or respected people)",
+      "audio": "tts/w/d49bc5e00a2efa6b.m4a"
+    },
+    {
+      "deva": "नाम",
+      "roman": "naam",
+      "meaning": "name",
+      "audio": "tts/w/533f2bd9dae87a6b.m4a"
+    },
+    {
+      "deva": "सब",
+      "roman": "sab",
+      "meaning": "all / everyone / everything",
+      "audio": "tts/w/03eebd2bdf6bc309.m4a"
+    },
+    {
+      "deva": "मुझे",
+      "roman": "mujhe",
+      "meaning": "to me / me",
+      "note": "Many Hindi feelings work as 'to me': mujhe pata = to me it's known.",
+      "audio": "tts/w/7da690a4c5fdd3b4.m4a"
+    },
+    {
+      "deva": "थोड़ी",
+      "roman": "thodi",
+      "meaning": "a little (feminine)",
+      "note": "Thodi Hindi, thodi chai: both feminine.",
+      "audio": "tts/w/91d3c2e6b54d728a.m4a"
+    },
+    {
+      "deva": "थोड़ा",
+      "roman": "thoda",
+      "meaning": "a little",
+      "audio": "tts/w/91d766e6b550bf0d.m4a"
+    },
+    {
+      "deva": "हिंदी",
+      "roman": "hindi",
+      "meaning": "Hindi",
+      "audio": "tts/w/45907b4edb8ea72a.m4a"
+    },
+    {
+      "deva": "आती",
+      "roman": "aati",
+      "meaning": "comes (feminine)",
+      "note": "Mujhe Hindi aati hai = Hindi comes to me, i.e. I know Hindi.",
+      "audio": "tts/w/5010a475fbaa3028.m4a"
+    },
+    {
+      "deva": "धीरे",
+      "roman": "dheere",
+      "meaning": "slowly",
+      "audio": "tts/w/2d5ac742c74ed503.m4a"
+    },
+    {
+      "deva": "बोलिए",
+      "roman": "boliye",
+      "meaning": "please speak",
+      "note": "Polite form of bolo (speak).",
+      "audio": "tts/w/4a7e7263b34f7383.m4a"
+    },
+    {
+      "deva": "समझ",
+      "roman": "samajh",
+      "meaning": "understand / understanding",
+      "audio": "tts/w/3128f331c52992ce.m4a"
+    },
+    {
+      "deva": "आया",
+      "roman": "aaya",
+      "meaning": "came",
+      "note": "Samajh nahin aaya = it didn't come into understanding.",
+      "audio": "tts/w/6fee38bd54d8b6f0.m4a"
+    },
+    {
+      "deva": "से",
+      "roman": "se",
+      "meaning": "from / with",
+      "note": "Phir se = again.",
+      "audio": "tts/w/03ec822bdf6adbf1.m4a"
+    },
+    {
+      "deva": "इसका",
+      "roman": "iska",
+      "meaning": "its / of this",
+      "audio": "tts/w/6639821109b439b1.m4a"
+    },
+    {
+      "deva": "मतलब",
+      "roman": "matlab",
+      "meaning": "meaning",
+      "audio": "tts/w/f2c0a2edd0c70c01.m4a"
+    },
+    {
+      "deva": "में",
+      "roman": "mein",
+      "meaning": "in",
+      "audio": "tts/w/7a82bbc67223338f.m4a"
+    },
+    {
+      "deva": "इसे",
+      "roman": "ise",
+      "meaning": "this / it (as the object)",
+      "audio": "tts/w/1424456da3e1d592.m4a"
+    },
+    {
+      "deva": "कहते",
+      "roman": "kehte",
+      "meaning": "say / call",
+      "note": "Kehte hain = (people) call it.",
+      "audio": "tts/w/e32b9f6d69e1012f.m4a"
+    },
+    {
+      "deva": "गए",
+      "roman": "gaye",
+      "meaning": "went (masculine or respectful)",
+      "note": "Samajh gaye = understood.",
+      "audio": "tts/w/a1907919f341f70b.m4a"
+    },
+    {
+      "deva": "गई",
+      "roman": "gayi",
+      "meaning": "went (feminine)",
+      "note": "Samajh gayi = understood, said by or to a woman.",
+      "audio": "tts/w/a1907e19f341ff8a.m4a"
+    },
+    {
+      "deva": "गया",
+      "roman": "gaya",
+      "meaning": "went (masculine)",
+      "note": "Also shows something has happened: pet bhar gaya = my stomach got full.",
+      "audio": "tts/w/27ae901e6bf2b863.m4a"
+    },
+    {
+      "deva": "एक",
+      "roman": "ek",
+      "meaning": "one",
+      "audio": "tts/w/21c562d392dc5901.m4a"
+    },
+    {
+      "deva": "मिनट",
+      "roman": "minute",
+      "meaning": "minute",
+      "note": "Borrowed from English.",
+      "audio": "tts/w/7253e45425c0e593.m4a"
+    },
+    {
+      "deva": "पता",
+      "roman": "pata",
+      "meaning": "known / aware",
+      "note": "Mujhe pata hai = I know.",
+      "audio": "tts/w/ff6597d8ce85198b.m4a"
+    },
+    {
+      "deva": "सीख",
+      "roman": "seekh",
+      "meaning": "learn",
+      "audio": "tts/w/de14b4dcfb259dea.m4a"
+    },
+    {
+      "deva": "रहा",
+      "roman": "raha",
+      "meaning": "-ing (masculine)",
+      "note": "Seekh raha hoon = am learning.",
+      "audio": "tts/w/b2d968a2dec73180.m4a"
+    },
+    {
+      "deva": "रही",
+      "roman": "rahi",
+      "meaning": "-ing (feminine)",
+      "audio": "tts/w/b2dc0ca2dec8cb03.m4a"
+    },
+    {
+      "deva": "रहे",
+      "roman": "rahe",
+      "meaning": "-ing (plural or respectful)",
+      "audio": "tts/w/b2dc11a2dec8d382.m4a"
+    },
+    {
+      "deva": "नानी",
+      "roman": "nani",
+      "meaning": "grandmother (mother's mother)",
+      "audio": "tts/w/c90e6e996e956b92.m4a"
+    },
+    {
+      "deva": "नाना",
+      "roman": "nana",
+      "meaning": "grandfather (mother's father)",
+      "audio": "tts/w/c912e2996e9a1985.m4a"
+    },
+    {
+      "deva": "दादी",
+      "roman": "dadi",
+      "meaning": "grandmother (father's mother)",
+      "audio": "tts/w/6ff896df53d31ab2.m4a"
+    },
+    {
+      "deva": "दादा",
+      "roman": "dada",
+      "meaning": "grandfather (father's father)",
+      "audio": "tts/w/6ffacadf53d3f5e5.m4a"
+    },
+    {
+      "deva": "मामा",
+      "roman": "mama",
+      "meaning": "uncle (mother's brother)",
+      "audio": "tts/w/6ae3ef149a8e3125.m4a"
+    },
+    {
+      "deva": "मौसी",
+      "roman": "mausi",
+      "meaning": "aunt (mother's sister)",
+      "audio": "tts/w/ab5c52102d7a52ef.m4a"
+    },
+    {
+      "deva": "चाचा",
+      "roman": "chacha",
+      "meaning": "uncle (father's younger brother)",
+      "audio": "tts/w/c96b1e36febe4475.m4a"
+    },
+    {
+      "deva": "बुआ",
+      "roman": "bua",
+      "meaning": "aunt (father's sister)",
+      "audio": "tts/w/49c3b16d5efb8773.m4a"
+    },
+    {
+      "deva": "मम्मी",
+      "roman": "mummy",
+      "meaning": "mum",
+      "audio": "tts/w/4b91f643d2abff3e.m4a"
+    },
+    {
+      "deva": "पापा",
+      "roman": "papa",
+      "meaning": "dad",
+      "audio": "tts/w/cd61a53942bfc9b5.m4a"
+    },
+    {
+      "deva": "जी",
+      "roman": "ji",
+      "meaning": "(respect)",
+      "note": "Added after a name or title to show respect.",
+      "audio": "tts/w/2e5404558ae2f340.m4a"
+    },
+    {
+      "deva": "ये",
+      "roman": "ye",
+      "meaning": "this / these / he / she",
+      "note": "With hain it politely introduces someone.",
+      "audio": "tts/w/a5ceffcc7dc28ff2.m4a"
+    },
+    {
+      "deva": "पत्नी",
+      "roman": "patni",
+      "meaning": "wife",
+      "audio": "tts/w/c2aff20822e14fca.m4a"
+    },
+    {
+      "deva": "पति",
+      "roman": "pati",
+      "meaning": "husband",
+      "audio": "tts/w/ff6596d8ce8517d8.m4a"
+    },
+    {
+      "deva": "आपका",
+      "roman": "aapka",
+      "meaning": "your (respectful, masculine words)",
+      "audio": "tts/w/cd0736f57a4647e6.m4a"
+    },
+    {
+      "deva": "आपके",
+      "roman": "aapke",
+      "meaning": "your (respectful, plural words)",
+      "audio": "tts/w/cd09cff57a47ceb8.m4a"
+    },
+    {
+      "deva": "भाई",
+      "roman": "bhai",
+      "meaning": "brother",
+      "audio": "tts/w/c503fbae5a78149a.m4a"
+    },
+    {
+      "deva": "बहन",
+      "roman": "behen",
+      "meaning": "sister",
+      "audio": "tts/w/e9bd7a43420903e6.m4a"
+    },
+    {
+      "deva": "भाभी",
+      "roman": "bhabhi",
+      "meaning": "brother's wife",
+      "audio": "tts/w/053fe8c5d77e7b46.m4a"
+    },
+    {
+      "deva": "जीजा",
+      "roman": "jija",
+      "meaning": "sister's husband",
+      "audio": "tts/w/ccac4cfee24a31e6.m4a"
+    },
+    {
+      "deva": "बेटा",
+      "roman": "beta",
+      "meaning": "son / dear",
+      "note": "Used fondly for any younger person.",
+      "audio": "tts/w/7a4319a440fe70f0.m4a"
+    },
+    {
+      "deva": "बेटी",
+      "roman": "beti",
+      "meaning": "daughter / dear",
+      "audio": "tts/w/7a469da441018713.m4a"
+    },
+    {
+      "deva": "कितने",
+      "roman": "kitne",
+      "meaning": "how many",
+      "audio": "tts/w/ef8982e8e6dc507f.m4a"
+    },
+    {
+      "deva": "बच्चे",
+      "roman": "bachche",
+      "meaning": "children",
+      "audio": "tts/w/d6e0b61c14ff8475.m4a"
+    },
+    {
+      "deva": "घर",
+      "roman": "ghar",
+      "meaning": "home / house",
+      "audio": "tts/w/8502ba32f8df381d.m4a"
+    },
+    {
+      "deva": "खाना",
+      "roman": "khaana",
+      "meaning": "food / to eat",
+      "audio": "tts/w/b6745b75e1776bbb.m4a"
+    },
+    {
+      "deva": "बहुत",
+      "roman": "bahut",
+      "meaning": "very / a lot",
+      "audio": "tts/w/47ba5ebf6a0e1d24.m4a"
+    },
+    {
+      "deva": "स्वादिष्ट",
+      "roman": "swaadisht",
+      "meaning": "delicious",
+      "note": "A little formal.",
+      "audio": "tts/w/515ef6108d2077a7.m4a"
+    },
+    {
+      "deva": "बस",
+      "roman": "bas",
+      "meaning": "enough / that's all",
+      "audio": "tts/w/b03ae0c1b2d36d61.m4a"
+    },
+    {
+      "deva": "पेट",
+      "roman": "pet",
+      "meaning": "stomach",
+      "audio": "tts/w/2ad310f23c31f54c.m4a"
+    },
+    {
+      "deva": "भर",
+      "roman": "bhar",
+      "meaning": "fill / full",
+      "audio": "tts/w/e4f34cbf7f548cd8.m4a"
+    },
+    {
+      "deva": "और",
+      "roman": "aur",
+      "meaning": "and / more",
+      "audio": "tts/w/acd85a0f290cfb11.m4a"
+    },
+    {
+      "deva": "लीजिए",
+      "roman": "lijiye",
+      "meaning": "please take",
+      "note": "Polite form of lo (take).",
+      "audio": "tts/w/ffd84e0649859420.m4a"
+    },
+    {
+      "deva": "पानी",
+      "roman": "paani",
+      "meaning": "water",
+      "audio": "tts/w/b98ef9227452c980.m4a"
+    },
+    {
+      "deva": "दीजिए",
+      "roman": "dijiye",
+      "meaning": "please give",
+      "note": "Polite form of do (give).",
+      "audio": "tts/w/9ce78e784960acc4.m4a"
+    },
+    {
+      "deva": "तीखा",
+      "roman": "teekha",
+      "meaning": "spicy (hot)",
+      "audio": "tts/w/59edf18540601b54.m4a"
+    },
+    {
+      "deva": "खा",
+      "roman": "kha",
+      "meaning": "eat",
+      "audio": "tts/w/bfcec025f6bf5dbd.m4a"
+    },
+    {
+      "deva": "लिया",
+      "roman": "liya",
+      "meaning": "took / did (completed)",
+      "note": "Kha liya = have eaten.",
+      "audio": "tts/w/72d2c7fdb6891cc7.m4a"
+    },
+    {
+      "deva": "चाय",
+      "roman": "chai",
+      "meaning": "tea",
+      "note": "Feminine: chai acchi hai.",
+      "audio": "tts/w/367f350ccbb3e1be.m4a"
+    },
+    {
+      "deva": "पियोगे",
+      "roman": "piyoge",
+      "meaning": "will (you) drink",
+      "note": "Familiar, to a man.",
+      "audio": "tts/w/73dacff099f4257e.m4a"
+    },
+    {
+      "deva": "पियोगी",
+      "roman": "piyogi",
+      "meaning": "will (you) drink",
+      "note": "Familiar, to a woman.",
+      "audio": "tts/w/73dad2f099f42a97.m4a"
+    },
+    {
+      "deva": "सी",
+      "roman": "si",
+      "meaning": "-ish / just",
+      "note": "Thodi si = just a little.",
+      "audio": "tts/w/03ec832bdf6adda4.m4a"
+    },
+    {
+      "deva": "खाओ",
+      "roman": "khao",
+      "meaning": "eat!",
+      "note": "Familiar command.",
+      "audio": "tts/w/ba2ef05065221d1e.m4a"
+    },
+    {
+      "deva": "बना",
+      "roman": "bana",
+      "meaning": "made / turned out",
+      "audio": "tts/w/361503cb1f0c3421.m4a"
+    },
+    {
+      "deva": "मज़ेदार",
+      "roman": "mazedaar",
+      "meaning": "tasty / fun",
+      "audio": "tts/w/2719d06d28488965.m4a"
+    },
+    {
+      "deva": "कम",
+      "roman": "kam",
+      "meaning": "less / little",
+      "audio": "tts/w/0da28c0e30ff63fa.m4a"
+    },
+    {
+      "deva": "रोटी",
+      "roman": "roti",
+      "meaning": "roti (flatbread)",
+      "audio": "tts/w/95942c793b46fa7b.m4a"
+    },
+    {
+      "deva": "लो",
+      "roman": "lo",
+      "meaning": "take!",
+      "note": "Familiar command.",
+      "audio": "tts/w/6b0431fb114331b3.m4a"
+    },
+    {
+      "deva": "लग",
+      "roman": "lag",
+      "meaning": "seem / be laid out",
+      "note": "Its meaning depends on the phrase.",
+      "audio": "tts/w/6b088dfb1147b6de.m4a"
+    },
+    {
+      "deva": "लगा",
+      "roman": "laga",
+      "meaning": "seemed / felt",
+      "note": "Kaisa laga = how did it feel, i.e. did you like it.",
+      "audio": "tts/w/bb1254681d82fd2c.m4a"
+    },
+    {
+      "deva": "लगता",
+      "roman": "lagta",
+      "meaning": "seems / feels",
+      "note": "Accha lagta hai = (I) like it.",
+      "audio": "tts/w/e22bc2d56a9b0220.m4a"
+    },
+    {
+      "deva": "आ",
+      "roman": "aa",
+      "meaning": "come",
+      "audio": "tts/w/410c201b7b340505.m4a"
+    },
+    {
+      "deva": "सफ़र",
+      "roman": "safar",
+      "meaning": "journey",
+      "audio": "tts/w/2b55bc693008a538.m4a"
+    },
+    {
+      "deva": "था",
+      "roman": "tha",
+      "meaning": "was",
+      "audio": "tts/w/629bda791cc4cd3a.m4a"
+    },
+    {
+      "deva": "काम",
+      "roman": "kaam",
+      "meaning": "work",
+      "audio": "tts/w/19a90d92cbc69220.m4a"
+    },
+    {
+      "deva": "चल",
+      "roman": "chal",
+      "meaning": "go / run",
+      "note": "Chal raha hai = is going.",
+      "audio": "tts/w/6e71d4488d473fe5.m4a"
+    },
+    {
+      "deva": "बैठो",
+      "roman": "baitho",
+      "meaning": "sit!",
+      "note": "Familiar command.",
+      "audio": "tts/w/f654a704986d1d18.m4a"
+    },
+    {
+      "deva": "कहाँ",
+      "roman": "kahaan",
+      "meaning": "where",
+      "audio": "tts/w/4d77099cfa6c7632.m4a"
+    },
+    {
+      "deva": "आज",
+      "roman": "aaj",
+      "meaning": "today",
+      "audio": "tts/w/eec17da1d0fde907.m4a"
+    },
+    {
+      "deva": "मौसम",
+      "roman": "mausam",
+      "meaning": "weather",
+      "audio": "tts/w/ab57d6102d759764.m4a"
+    },
+    {
+      "deva": "गर्मी",
+      "roman": "garmi",
+      "meaning": "heat",
+      "audio": "tts/w/67291c0fa3024143.m4a"
+    },
+    {
+      "deva": "ठंड",
+      "roman": "thand",
+      "meaning": "cold",
+      "audio": "tts/w/87151aab65bad44e.m4a"
+    },
+    {
+      "deva": "थक",
+      "roman": "thak",
+      "meaning": "tire",
+      "audio": "tts/w/629bf1791cc4f44f.m4a"
+    },
+    {
+      "deva": "नींद",
+      "roman": "neend",
+      "meaning": "sleep",
+      "audio": "tts/w/7c0094f0c1076d74.m4a"
+    },
+    {
+      "deva": "कल",
+      "roman": "kal",
+      "meaning": "tomorrow / yesterday",
+      "note": "Context tells you which.",
+      "audio": "tts/w/0da2700e30ff3466.m4a"
+    },
+    {
+      "deva": "मिलते",
+      "roman": "milte",
+      "meaning": "meet",
+      "audio": "tts/w/9d335550126b487c.m4a"
+    },
+    {
+      "deva": "हो",
+      "roman": "ho",
+      "meaning": "be",
+      "note": "In wishes like mubaarak ho, it means 'may it be'.",
+      "audio": "tts/w/e176681fd858c6a4.m4a"
+    },
+    {
+      "deva": "कुछ",
+      "roman": "kuch",
+      "meaning": "something / some",
+      "note": "Kuch nahin = nothing.",
+      "audio": "tts/w/bb41db2df4f1d57b.m4a"
+    },
+    {
+      "deva": "आपसे",
+      "roman": "aapse",
+      "meaning": "with you / from you",
+      "audio": "tts/w/3f181f67b6bd0b65.m4a"
+    },
+    {
+      "deva": "मिलकर",
+      "roman": "milkar",
+      "meaning": "having met",
+      "audio": "tts/w/e76c6be61eb08e11.m4a"
+    },
+    {
+      "deva": "ख़ुशी",
+      "roman": "khushi",
+      "meaning": "happiness",
+      "audio": "tts/w/a405dab8661be67c.m4a"
+    },
+    {
+      "deva": "ख़ुश",
+      "roman": "khush",
+      "meaning": "happy",
+      "audio": "tts/w/2775b7a882712883.m4a"
+    },
+    {
+      "deva": "हुई",
+      "roman": "hui",
+      "meaning": "happened / was (feminine)",
+      "audio": "tts/w/ca9b94f1ffe0259a.m4a"
+    },
+    {
+      "deva": "सुंदर",
+      "roman": "sundar",
+      "meaning": "beautiful",
+      "audio": "tts/w/ded3cd62e01ef3b5.m4a"
+    },
+    {
+      "deva": "शुक्रिया",
+      "roman": "shukriya",
+      "meaning": "thanks",
+      "audio": "tts/w/690cf61624c026c6.m4a"
+    },
+    {
+      "deva": "कोई",
+      "roman": "koi",
+      "meaning": "any / some",
+      "audio": "tts/w/542a145ec31958a4.m4a"
+    },
+    {
+      "deva": "बात",
+      "roman": "baat",
+      "meaning": "matter / thing (said)",
+      "note": "Koi baat nahin = no problem.",
+      "audio": "tts/w/a299da5b0d771fb5.m4a"
+    },
+    {
+      "deva": "आपने",
+      "roman": "aapne",
+      "meaning": "you (did)",
+      "note": "The form used before a past action.",
+      "audio": "tts/w/95035ee4c817af15.m4a"
+    },
+    {
+      "deva": "मेहनत",
+      "roman": "mehnat",
+      "meaning": "hard work / effort",
+      "audio": "tts/w/4be1d0a17dc60a36.m4a"
+    },
+    {
+      "deva": "की",
+      "roman": "ki",
+      "meaning": "of / did",
+      "note": "Of with feminine words (Diwali ki); did with mehnat.",
+      "audio": "tts/w/0da7040e310418b9.m4a"
+    },
+    {
+      "deva": "यहाँ",
+      "roman": "yahaan",
+      "meaning": "here",
+      "audio": "tts/w/ab995f2ae69774a8.m4a"
+    },
+    {
+      "deva": "आना",
+      "roman": "aana",
+      "meaning": "come / to come",
+      "note": "Phir aana = come again.",
+      "audio": "tts/w/fd060c9890c6a863.m4a"
+    },
+    {
+      "deva": "ज़रूर",
+      "roman": "zaroor",
+      "meaning": "definitely",
+      "audio": "tts/w/6c7b7cca5ec9e88a.m4a"
+    },
+    {
+      "deva": "जन्मदिन",
+      "roman": "janamdin",
+      "meaning": "birthday",
+      "audio": "tts/w/0b6db48d96a1ab72.m4a"
+    },
+    {
+      "deva": "मुबारक",
+      "roman": "mubaarak",
+      "meaning": "congratulations / happy",
+      "audio": "tts/w/6077ede37d9b9a28.m4a"
+    },
+    {
+      "deva": "दिवाली",
+      "roman": "diwali",
+      "meaning": "Diwali",
+      "audio": "tts/w/eb2a67d9a0e0ab4a.m4a"
+    },
+    {
+      "deva": "शुभकामनाएँ",
+      "roman": "shubhkaamnaayein",
+      "meaning": "good wishes",
+      "audio": "tts/w/96753b88f4d708e9.m4a"
+    },
+    {
+      "deva": "होली",
+      "roman": "holi",
+      "meaning": "Holi",
+      "audio": "tts/w/e17ce88e0ad52077.m4a"
+    },
+    {
+      "deva": "जीते",
+      "roman": "jeete",
+      "meaning": "live (masculine)",
+      "note": "Jeete raho = may you live long.",
+      "audio": "tts/w/cb6b06bf992eba10.m4a"
+    },
+    {
+      "deva": "जीती",
+      "roman": "jeeti",
+      "meaning": "live (feminine)",
+      "audio": "tts/w/cb6b0dbf992ec5f5.m4a"
+    },
+    {
+      "deva": "रहो",
+      "roman": "raho",
+      "meaning": "stay / keep",
+      "audio": "tts/w/b2dc15a2dec8da4e.m4a"
+    },
+    {
+      "deva": "शादी",
+      "roman": "shaadi",
+      "meaning": "wedding / marriage",
+      "audio": "tts/w/fe25d2a59873afe2.m4a"
+    },
+    {
+      "deva": "बधाई",
+      "roman": "badhaai",
+      "meaning": "congratulations",
+      "audio": "tts/w/8ee53cff48c67002.m4a"
+    },
+    {
+      "deva": "नया",
+      "roman": "naya",
+      "meaning": "new",
+      "audio": "tts/w/86ae434ae52c8556.m4a"
+    },
+    {
+      "deva": "साल",
+      "roman": "saal",
+      "meaning": "year",
+      "audio": "tts/w/863b6daed5cca9ff.m4a"
+    },
+    {
+      "deva": "भगवान",
+      "roman": "bhagwaan",
+      "meaning": "God",
+      "audio": "tts/w/d811801536bc5f9a.m4a"
+    },
+    {
+      "deva": "भला",
+      "roman": "bhala",
+      "meaning": "good / well-being",
+      "audio": "tts/w/98ed9dd226ac420c.m4a"
+    },
+    {
+      "deva": "करे",
+      "roman": "kare",
+      "meaning": "may (he) do",
+      "audio": "tts/w/540c22256d53d468.m4a"
+    },
+    {
+      "deva": "प्रणाम",
+      "roman": "pranaam",
+      "meaning": "respectful greeting",
+      "note": "For elders.",
+      "audio": "tts/w/7db503c5e92112f8.m4a"
+    }
+  ]
 }

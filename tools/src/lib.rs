@@ -20,15 +20,36 @@ pub fn workspace_root() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).parent().unwrap().to_path_buf()
 }
 
-/// Stems of the `.mp3` files in a directory.
-pub fn mp3_stems(dir: &std::path::Path) -> Vec<String> {
-    let Ok(entries) = std::fs::read_dir(dir) else { return vec![] };
-    let mut out: Vec<String> = entries
-        .filter_map(|e| e.ok())
-        .map(|e| e.path())
-        .filter(|p| p.extension().is_some_and(|x| x == "mp3"))
-        .filter_map(|p| p.file_stem().map(|s| s.to_string_lossy().into_owned()))
-        .collect();
-    out.sort();
+/// Every audio file (`.mp3` or `.m4a`) under `dir`, as paths relative to it
+/// with `/` separators, e.g. `tts/w/1a2b….m4a`.
+pub fn audio_files(dir: &std::path::Path) -> std::collections::BTreeSet<String> {
+    fn walk(base: &std::path::Path, dir: &std::path::Path, out: &mut std::collections::BTreeSet<String>) {
+        let Ok(entries) = std::fs::read_dir(dir) else { return };
+        for path in entries.flatten().map(|e| e.path()) {
+            if path.is_dir() {
+                walk(base, &path, out);
+            } else if path.extension().is_some_and(|x| x == "mp3" || x == "m4a") {
+                let rel = path.strip_prefix(base).unwrap().to_string_lossy().replace('\\', "/");
+                out.insert(rel);
+            }
+        }
+    }
+    let mut out = std::collections::BTreeSet::new();
+    walk(dir, dir, &mut out);
     out
+}
+
+/// The best clip for a file stem, relative to the audio folder. A recording
+/// (a person or ElevenLabs, in `audio/`) beats the Mac's voice (`audio/tts/`).
+/// `sub` is `""` for phrases or `"w/"` for words.
+pub fn find_clip(files: &std::collections::BTreeSet<String>, sub: &str, stem: &str) -> String {
+    [
+        format!("{sub}{stem}.mp3"),
+        format!("{sub}{stem}.m4a"),
+        format!("tts/{sub}{stem}.m4a"),
+        format!("tts/{sub}{stem}.mp3"),
+    ]
+    .into_iter()
+    .find(|candidate| files.contains(candidate))
+    .unwrap_or_default()
 }

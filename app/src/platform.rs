@@ -1,6 +1,5 @@
 //! Everything that touches the browser: time, storage, audio, speech, files.
 
-use baatcheet_core::content::word_clip_name;
 use baatcheet_core::{Content, Date, Gender, Learner, Progress};
 use serde::{Deserialize, Serialize};
 use std::cell::RefCell;
@@ -259,8 +258,8 @@ fn with_player(f: impl FnOnce(&HtmlAudioElement)) {
 /// Play a phrase: its recorded clip if there is one, otherwise the device's Hindi voice.
 pub fn play_phrase(content: &Content, id: &str, slow: bool) {
     let Some(p) = content.phrase(id) else { return };
-    if p.audio {
-        play_clip(&format!("audio/{}.mp3", p.clip_name()), &p.deva, slow);
+    if !p.audio.is_empty() {
+        play_clip(&format!("audio/{}", p.audio), &p.deva, slow);
     } else {
         speak(&p.deva, slow);
     }
@@ -268,8 +267,8 @@ pub fn play_phrase(content: &Content, id: &str, slow: bool) {
 
 /// Play one word tile.
 pub fn play_word(content: &Content, deva: &str, slow: bool) {
-    if content.has_word_audio(deva) {
-        play_clip(&format!("audio/w/{}.mp3", word_clip_name(deva)), deva, slow);
+    if let Some(w) = content.word(deva).filter(|w| !w.audio.is_empty()) {
+        play_clip(&format!("audio/{}", w.audio), deva, slow);
     } else {
         speak(deva, slow);
     }

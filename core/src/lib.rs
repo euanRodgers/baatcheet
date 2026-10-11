@@ -9,7 +9,7 @@ pub mod rng;
 pub mod session;
 
 pub use cards::{Answer, Card, CardKind, Choice};
-pub use content::{Content, Direction, Gender, Learner, Phrase};
+pub use content::{Content, Direction, Gender, Learner, Phrase, Word};
 pub use date::Date;
 pub use progress::{Outcome, Progress};
 pub use session::{Feedback, Session};
@@ -31,14 +31,14 @@ pub(crate) fn test_content() -> Content {
         deva_tiles: deva.split_whitespace().map(String::from).collect(),
         replies: replies.iter().map(|s| s.to_string()).collect(),
         status: Status::Draft,
-        audio: false,
+        audio: String::new(),
         female: None,
         female_form: false,
     };
     use Direction::*;
     Content {
         version: 1,
-        word_audio: vec![],
+        words: vec![],
         phrases: vec![
             p("greet-001", Say, "Namaste", "नमस्ते", "Hello", &[]),
             p("greet-002", Say, "Aap kaise hain?", "आप कैसे हैं?", "How are you? (to a man)", &[]),

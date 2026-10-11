@@ -55,9 +55,10 @@ pub struct Phrase {
     #[serde(default)]
     pub replies: Vec<String>,
     pub status: Status,
-    /// Set by `build-content` when `audio/{id}.mp3` exists.
-    #[serde(default)]
-    pub audio: bool,
+    /// Recorded clip, relative to `audio/` (e.g. `food-002.mp3` or
+    /// `tts/food-002.m4a`). Empty means the app uses the device's voice.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub audio: String,
     /// The version for a woman learner, when the words change with who's
     /// speaking or being spoken to (samajh gaya / samajh gayi).
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -65,6 +66,20 @@ pub struct Phrase {
     /// True once [`Content::for_learner`] has swapped in the woman's version.
     #[serde(skip)]
     pub female_form: bool,
+}
+
+/// One word, as glossed in `content/words.csv`.
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct Word {
+    pub deva: String,
+    pub roman: String,
+    pub meaning: String,
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub note: String,
+    /// Recorded clip relative to `audio/`, or empty.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub audio: String,
 }
 
 /// Another form of a phrase: its words, tiles and audio.
@@ -79,9 +94,9 @@ pub struct Form {
     pub notes: String,
     pub tiles: Vec<String>,
     pub deva_tiles: Vec<String>,
-    /// Set by `build-content` when `audio/{id}-f.mp3` exists.
-    #[serde(default)]
-    pub audio: bool,
+    /// Recorded clip for this form (`{id}-f`), relative to `audio/`, or empty.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub audio: String,
 }
 
 /// Placeholder in phrases for the learner's own name.
@@ -107,9 +122,14 @@ impl Phrase {
         self.roman.contains(NAME)
     }
 
-    /// File stem of this phrase's recorded clip in `audio/`.
-    pub fn clip_name(&self) -> String {
+    /// File stem for this phrase's clips: `{id}`, or `{id}-f` for a woman's form.
+    pub fn clip_stem(&self) -> String {
         if self.female_form { format!("{}-f", self.id) } else { self.id.clone() }
+    }
+
+    /// The romanised and Devanagari words side by side, for a word-by-word breakdown.
+    pub fn word_pairs(&self) -> impl Iterator<Item = (&str, &str)> {
+        self.tiles.iter().map(String::as_str).zip(self.deva_tiles.iter().map(String::as_str))
     }
 }
 
@@ -118,9 +138,9 @@ impl Phrase {
 pub struct Content {
     pub version: u32,
     pub phrases: Vec<Phrase>,
-    /// Names of word clips that exist in `audio/w/`, from [`word_clip_name`].
+    /// The glossary: every word used in the phrases.
     #[serde(default)]
-    pub word_audio: Vec<String>,
+    pub words: Vec<Word>,
 }
 
 impl Content {
@@ -158,7 +178,7 @@ impl Content {
             }
             if p.is_personal() {
                 // A recording can't say every name, so these use the device voice.
-                p.audio = false;
+                p.audio.clear();
                 for text in [&mut p.roman, &mut p.deva, &mut p.english, &mut p.notes] {
                     *text = text.replace(NAME, name);
                 }
@@ -170,9 +190,10 @@ impl Content {
         out
     }
 
-    pub fn has_word_audio(&self, deva_word: &str) -> bool {
-        let name = word_clip_name(deva_word);
-        self.word_audio.contains(&name)
+    /// The glossary entry for a word, ignoring punctuation (बस, matches बस).
+    pub fn word(&self, deva_word: &str) -> Option<&Word> {
+        let key = normalize_word(deva_word);
+        self.words.iter().find(|w| w.deva == key)
     }
 }
 
@@ -252,7 +273,7 @@ mod tests {
             deva_tiles: deva.split_whitespace().map(String::from).collect(),
             replies: vec![],
             status: Status::Draft,
-            audio: true,
+            audio: "surv-008.mp3".into(),
             female: None,
             female_form: false,
         }
@@ -268,22 +289,23 @@ mod tests {
             notes: String::new(),
             tiles: vec!["Haan,".into(), "samajh".into(), "gayi".into()],
             deva_tiles: vec!["हाँ,".into(), "समझ".into(), "गई".into()],
-            audio: false,
+            audio: "tts/surv-008-f.m4a".into(),
         });
         let naam = phrase("greet-012", "Mera naam {name} hai", "मेरा नाम {name} है");
-        let content = Content { version: 1, phrases: vec![gaya, naam], word_audio: vec![] };
+        let content = Content { version: 1, phrases: vec![gaya, naam], words: vec![] };
 
         let man = content.for_learner(&Learner { name: "Euan".into(), gender: Gender::Man });
         assert_eq!(man.phrases[0].roman, "Haan, samajh gaya");
-        assert_eq!(man.phrases[0].clip_name(), "surv-008");
+        assert_eq!(man.phrases[0].audio, "surv-008.mp3");
         assert_eq!(man.phrases[1].roman, "Mera naam Euan hai");
         assert_eq!(man.phrases[1].tiles[2], "Euan");
-        assert!(!man.phrases[1].audio, "a clip can't say every name");
+        assert!(man.phrases[1].audio.is_empty(), "a clip can't say every name");
 
         let woman = content.for_learner(&Learner { name: "Priya".into(), gender: Gender::Woman });
         assert_eq!(woman.phrases[0].deva, "हाँ, समझ गई");
         assert_eq!(woman.phrases[0].notes, "base", "keeps the phrase's notes when the form has none");
-        assert_eq!(woman.phrases[0].clip_name(), "surv-008-f");
+        assert_eq!(woman.phrases[0].audio, "tts/surv-008-f.m4a");
+        assert_eq!(woman.phrases[0].clip_stem(), "surv-008-f");
         assert_eq!(woman.phrases[1].deva, "मेरा नाम Priya है");
     }
 

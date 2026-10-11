@@ -2,12 +2,14 @@
 //!
 //!     cargo run -p baatcheet-tools --bin build-content [-- --approved-only --strict]
 //!
-//! Options: --csv <path>  --out <path>  --audio <dir>
+//! Options: --csv <path>  --words <path>  --out <path>  --audio <dir>
 //!   --approved-only  leave out draft phrases
 //!   --strict         treat missing audio as an error, not a warning
 
-use baatcheet_core::content::{Content, Direction, Form, Phrase, Priority, Status, PACKS, normalize_word, roman_words};
-use baatcheet_tools::{has_flag, mp3_stems, path_arg};
+use baatcheet_core::content::{
+    Content, Direction, Form, NAME, PACKS, Phrase, Priority, Status, Word, normalize_word, roman_words, word_clip_name,
+};
+use baatcheet_tools::{audio_files, find_clip, has_flag, path_arg};
 use serde::Deserialize;
 use std::collections::{BTreeMap, HashSet};
 use std::process::ExitCode;
@@ -45,6 +47,16 @@ struct Row {
     notes_f: String,
 }
 
+/// One row of `content/words.csv`: the glossary.
+#[derive(Deserialize)]
+struct WordRow {
+    deva: String,
+    roman: String,
+    meaning: String,
+    #[serde(default)]
+    note: String,
+}
+
 fn split_tiles(explicit: &str, text: &str) -> Vec<String> {
     if explicit.trim().is_empty() {
         text.split_whitespace().map(String::from).collect()
@@ -56,6 +68,7 @@ fn split_tiles(explicit: &str, text: &str) -> Vec<String> {
 fn main() -> ExitCode {
     let args: Vec<String> = std::env::args().collect();
     let csv_path = path_arg(&args, "--csv", "content/phrases.csv");
+    let words_path = path_arg(&args, "--words", "content/words.csv");
     let out_path = path_arg(&args, "--out", "app/public/phrases.json");
     let audio_dir = path_arg(&args, "--audio", "app/public/audio");
     let approved_only = has_flag(&args, "--approved-only");
@@ -98,7 +111,7 @@ fn main() -> ExitCode {
                 notes: row.notes_f.trim().to_string(),
                 tiles: split_tiles("", &row.roman_f),
                 deva_tiles: split_tiles("", &row.deva_f),
-                audio: false,
+                audio: String::new(),
             })
         };
         phrases.push(Phrase {
@@ -115,7 +128,7 @@ fn main() -> ExitCode {
             english: row.english.trim().to_string(),
             notes: row.notes.trim().to_string(),
             status: row.status,
-            audio: false,
+            audio: String::new(),
             female,
             female_form: false,
         });
@@ -208,38 +221,98 @@ fn main() -> ExitCode {
         }
     }
 
-    // 6. Audio: approved phrases have a clip (a woman's form has its own,
-    // `{id}-f.mp3`), and no clip is orphaned. Phrases with the learner's name
+    // 6. The glossary: every word used has a meaning, spelled the same way.
+    let mut words: Vec<Word> = Vec::new();
+    match csv::Reader::from_path(&words_path) {
+        Err(e) => warnings.push(format!("no glossary ({}): {e}", words_path.display())),
+        Ok(mut reader) => {
+            for (i, row) in reader.deserialize::<WordRow>().enumerate() {
+                match row {
+                    Ok(r) => words.push(Word {
+                        deva: normalize_word(&r.deva),
+                        roman: r.roman.trim().to_string(),
+                        meaning: r.meaning.trim().to_string(),
+                        note: r.note.trim().to_string(),
+                        audio: String::new(),
+                    }),
+                    Err(e) => errors.push(format!("{} line {}: {e}", words_path.display(), i + 2)),
+                }
+            }
+        }
+    }
+    let mut seen_words = HashSet::new();
+    for w in &words {
+        if !seen_words.insert(w.deva.as_str()) {
+            errors.push(format!("{} is in the glossary twice", w.deva));
+        }
+    }
+    let mut missing: Vec<String> = Vec::new();
+    for (deva, romans) in &spellings {
+        if deva.contains(NAME) {
+            continue;
+        }
+        match words.iter().find(|w| &w.deva == deva) {
+            None => missing.push(format!("{deva} ({})", romans.keys().next().unwrap())),
+            Some(w) => {
+                let glossary = normalize_word(&w.roman);
+                if let Some((roman, ids)) = romans.iter().find(|(r, _)| **r != glossary) {
+                    errors.push(format!(
+                        "{deva} is \"{}\" in the glossary but \"{roman}\" in {}",
+                        w.roman,
+                        ids.join(", ")
+                    ));
+                }
+            }
+        }
+    }
+    if !missing.is_empty() {
+        warnings.push(format!("{} word(s) have no meaning in the glossary: {}", missing.len(), missing.join(", ")));
+    }
+    let unused: Vec<&str> = words.iter().filter(|w| !spellings.contains_key(&w.deva)).map(|w| w.deva.as_str()).collect();
+    if !unused.is_empty() {
+        warnings.push(format!("glossary words no phrase uses: {}", unused.join(", ")));
+    }
+
+    // 7. Audio: approved phrases have a clip (a woman's form has its own,
+    // `{id}-f`), and no clip is orphaned. Phrases with the learner's name
     // can't be recorded, so they always use the device voice.
-    let clips = mp3_stems(&audio_dir);
+    let files = audio_files(&audio_dir);
+    let mut used_files: HashSet<String> = HashSet::new();
     for p in phrases.iter_mut() {
         if p.is_personal() {
             continue;
         }
-        p.audio = clips.contains(&p.id);
-        let female_clip = format!("{}-f", p.id);
+        p.audio = find_clip(&files, "", &p.id);
         let mut missing = vec![];
-        if !p.audio {
-            missing.push(format!("audio/{}.mp3", p.id));
+        if p.audio.is_empty() {
+            missing.push(format!("{}.mp3", p.id));
         }
+        used_files.insert(p.audio.clone());
         if let Some(f) = p.female.as_mut() {
-            f.audio = clips.contains(&female_clip);
-            if !f.audio {
-                missing.push(format!("audio/{female_clip}.mp3"));
+            let stem = format!("{}-f", p.id);
+            f.audio = find_clip(&files, "", &stem);
+            if f.audio.is_empty() {
+                missing.push(format!("{stem}.mp3"));
             }
+            used_files.insert(f.audio.clone());
         }
         if !missing.is_empty() && p.status != Status::Draft {
-            let msg = format!("{}: approved but has no {}", p.id, missing.join(" or "));
+            let msg = format!("{}: approved but has no audio ({})", p.id, missing.join(" or "));
             if strict { errors.push(msg) } else { warnings.push(msg) }
         }
     }
-    for clip in &clips {
-        let known = phrases.iter().any(|p| *clip == p.id || (p.female.is_some() && *clip == format!("{}-f", p.id)));
-        if !known {
-            warnings.push(format!("audio/{clip}.mp3 doesn't match any phrase"));
-        }
+    for w in words.iter_mut() {
+        w.audio = find_clip(&files, "w/", &word_clip_name(&w.deva));
+        used_files.insert(w.audio.clone());
     }
-    let word_audio = mp3_stems(&audio_dir.join("w"));
+    let orphans: Vec<&String> = files.iter().filter(|f| !used_files.contains(*f)).collect();
+    if !orphans.is_empty() {
+        warnings.push(format!(
+            "{} audio file(s) match no phrase or word (or a recording replaces them): {}",
+            orphans.len(),
+            orphans.iter().take(5).map(|s| s.as_str()).collect::<Vec<_>>().join(", ")
+        ));
+    }
 
     for w in &warnings {
         eprintln!("warning: {w}");
@@ -252,7 +325,7 @@ fn main() -> ExitCode {
         return ExitCode::FAILURE;
     }
 
-    let content = Content { version: 1, phrases, word_audio };
+    let content = Content { version: 1, phrases, words };
     let json = serde_json::to_string_pretty(&content).expect("content serialises");
     if let Err(e) = std::fs::write(&out_path, json + "\n") {
         eprintln!("Can't write {}: {e}", out_path.display());
@@ -261,11 +334,12 @@ fn main() -> ExitCode {
 
     let say = content.phrases.iter().filter(|p| p.direction.is_said()).count();
     let hear = content.phrases.iter().filter(|p| p.direction.is_heard()).count();
-    let with_audio = content.phrases.iter().filter(|p| p.audio).count();
+    let with_audio = content.phrases.iter().filter(|p| !p.audio.is_empty()).count();
+    let word_clips = content.words.iter().filter(|w| !w.audio.is_empty()).count();
     println!(
-        "Wrote {} phrases ({say} to say, {hear} to hear, {with_audio} with audio, {} word clips) to {}",
+        "Wrote {} phrases ({say} to say, {hear} to hear, {with_audio} with audio) and {} words ({word_clips} with audio) to {}",
         content.phrases.len(),
-        content.word_audio.len(),
+        content.words.len(),
         out_path.display()
     );
     for pack in &PACKS {

@@ -52,7 +52,7 @@ pub fn SettingsScreen() -> Element {
     let content = ctx.content.read();
     let total = content.phrases.len();
     let drafts = content.phrases.iter().filter(|p| p.status == Status::Draft).count();
-    let with_audio = content.phrases.iter().filter(|p| p.audio).count();
+    let with_audio = content.phrases.iter().filter(|p| !p.audio.is_empty()).count();
     let current = describe(&ctx.progress.read());
 
     rsx! {
